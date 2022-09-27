@@ -1,0 +1,6 @@
+C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\obj\Debug\netcoreapp3.1\Arcade Game 2022.csproj.AssemblyReference.cache
+C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\obj\Debug\netcoreapp3.1\Score Window.g.cs
+C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\obj\Debug\netcoreapp3.1\Settings Window.g.cs
+C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\obj\Debug\netcoreapp3.1\Arcade Game 2022_MarkupCompile.cache
+C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\obj\Debug\netcoreapp3.1\Arcade Game 2022_MarkupCompile.lref
