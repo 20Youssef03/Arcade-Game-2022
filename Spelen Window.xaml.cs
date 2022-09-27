@@ -13,13 +13,20 @@ using System.Windows.Shapes;
 namespace Arcade_Game_2022
 {
     /// <summary>
-    /// Interaction logic for Settings_Window.xaml
+    /// Interaction logic for Spelen_Window.xaml
     /// </summary>
-    public partial class Settings_Window : Window
+    public partial class Spelen_Window : Window
     {
-        public Settings_Window()
+        public Spelen_Window()
         {
             InitializeComponent();
+        }
+
+        private void Spelen_Window_Terug_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
         }
     }
 }

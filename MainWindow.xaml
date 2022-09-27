@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Button x:Name="Main_Window_Stoppen_Button" Content="Stoppen" HorizontalAlignment="Right" Margin="0,217,400,0" VerticalAlignment="Top" Height="217" Width="400" FontSize="24" Click="Main_Window_Stoppen_Button_Click"/>
+        <Button x:Name="Main_Window_Opties_Button" Content="Opties" HorizontalAlignment="Left" Margin="400,217,0,0" VerticalAlignment="Top" Height="217" Width="400" FontSize="24" Click="Main_Window_Opties_Button_Click"/>
+        <Button x:Name="Main_Window_Spelen_Button" Content="Spelen" HorizontalAlignment="Left" VerticalAlignment="Top" Height="217" Width="400" FontSize="24" Click="Main_Window_Spelen_Button_Click"/>
+        <Button x:Name="Main_Window_Score_Button" Content="Score" HorizontalAlignment="Left" Margin="400,0,0,0" VerticalAlignment="Top" FontSize="24" Height="217" Width="400" Click="Main_Window_Score_Button_Click"/>
 
     </Grid>
 </Window>

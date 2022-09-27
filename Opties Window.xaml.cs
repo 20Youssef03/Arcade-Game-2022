@@ -13,21 +13,16 @@ using System.Windows.Shapes;
 namespace Arcade_Game_2022
 {
     /// <summary>
-    /// Interaction logic for Score_Window.xaml
+    /// Interaction logic for Opties_Window.xaml
     /// </summary>
-    public partial class Score_Window : Window
+    public partial class Opties_Window : Window
     {
-        public Score_Window()
+        public Opties_Window()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Score_Window_Terug_Button_Click(object sender, RoutedEventArgs e)
+        private void Opties_Window_Terug_Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainwindow = new MainWindow();
             mainwindow.Visibility = Visibility.Visible;

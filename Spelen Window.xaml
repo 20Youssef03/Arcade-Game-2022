@@ -1,12 +1,13 @@
-﻿<Window x:Class="Arcade_Game_2022.Score_Window"
+﻿<Window x:Class="Arcade_Game_2022.Spelen_Window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Arcade_Game_2022"
         mc:Ignorable="d"
-        Title="Score_Window" Height="450" Width="800">
+        Title="Spelen_Window" Height="450" Width="800">
     <Grid>
-        <Button x:Name="Score_Window_Terug_Button" Content="Terug" HorizontalAlignment="Center" VerticalAlignment="Center" Height="136" Width="195" FontSize="24" Click="Score_Window_Terug_Button_Click"/>
+        <Button x:Name="Spelen_Window_Terug_Button" Content="Terug" HorizontalAlignment="Center" VerticalAlignment="Center" Height="128" Width="196" FontSize="24" Click="Spelen_Window_Terug_Button_Click"/>
+
     </Grid>
 </Window>
