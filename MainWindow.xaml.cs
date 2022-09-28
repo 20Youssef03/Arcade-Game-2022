@@ -24,5 +24,31 @@ namespace Arcade_Game_2022
         {
             InitializeComponent();
         }
+
+        private void Main_Window_Stoppen_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Main_Window_Opties_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Opties_Window opties_Window = new Opties_Window();
+            opties_Window.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void Main_Window_Score_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Score_Window score_Window = new Score_Window();
+            score_Window.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void Main_Window_Spelen_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Spelen_Window spelen_Window = new Spelen_Window();
+            spelen_Window.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+        }
     }
 }
