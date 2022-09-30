@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\Game\obj\Release\netcoreapp3.1\
+C:\Users\Kooistra\source\repos\Arcade game 2022\Arcade-Game-2022\obj\Release\netcoreapp3.1\
 Arcade_Game_2022
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\Game\App.xaml
-11407045341
+C:\Users\Kooistra\source\repos\Arcade game 2022\Arcade-Game-2022\App.xaml
+4-1309268668
 
-3-1233169557
+6541807586
 192-1533232326
-MainWindow.xaml;
+MainWindow.xaml;Opties Window.xaml;Score Window.xaml;Spelen Window.xaml;
 
 True
 
