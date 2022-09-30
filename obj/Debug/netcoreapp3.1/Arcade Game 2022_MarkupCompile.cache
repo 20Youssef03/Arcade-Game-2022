@@ -8,12 +8,12 @@ C:\Users\Kooistra\Source\Repos\20Youssef03\Arcade-Game-2022\obj\Debug\netcoreapp
 Arcade_Game_2022
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\Kooistra\Source\Repos\20Youssef03\Arcade-Game-2022\App.xaml
 4-1309268668
 
-6541807586
-192-1533232326
+1155137390
+3841228502644
 MainWindow.xaml;Opties Window.xaml;Score Window.xaml;Spelen Window.xaml;
 
 True
