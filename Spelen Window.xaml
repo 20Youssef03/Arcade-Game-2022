@@ -5,9 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Arcade_Game_2022"
         mc:Ignorable="d"
-        Title="Spelen_Window" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="Spelen_Window_Terug_Button" Content="Terug" HorizontalAlignment="Center" VerticalAlignment="Center" Height="128" Width="196" FontSize="24" Click="Spelen_Window_Terug_Button_Click"/>
-
-    </Grid>
+        Title="Spelen_Window" Height="450" Width="800" KeyDown="onKeyDown" Closed="onClose" KeyUp="onKeyUp">
+    <Canvas x:Name="SpelenCanvas">
+        <Rectangle x:Name="Speler"
+                   Canvas.Left="100"
+                   Canvas.Top="300"
+                   Width="20"
+                   Height="20"
+                   Fill="Red"
+                   />
+        <Rectangle Tag="Block"
+                   Width="800"
+                   Height="40"
+                   Fill="Green"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Canvas.Top="394"
+                   Canvas.Left="0"
+                   />
+        <Rectangle Tag="Block"
+            Width="40"
+            Height="40"
+            Fill="Green"
+            Canvas.Top="290"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Canvas.Left="208"
+            />
+        <Rectangle Tag="Block"
+            Width="40"
+            Height="40"
+            Fill="Green"
+            Canvas.Top="217"
+            Canvas.Left="344"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            />
+        <Rectangle Tag="Block"
+            Width="40"
+            Height="40"
+            Fill="Green"
+            Canvas.Top="108"
+            Canvas.Left="532"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            />
+    </Canvas>
 </Window>
