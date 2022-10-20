@@ -5,9 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Arcade_Game_2022"
         mc:Ignorable="d"
-        Title="Spelen_Window" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="Spelen_Window_Terug_Button" Content="Terug" HorizontalAlignment="Center" VerticalAlignment="Center" Height="128" Width="196" FontSize="24" Click="Spelen_Window_Terug_Button_Click"/>
-
-    </Grid>
+        Title="Spelen_Window" Height="864" Width="1536" KeyDown="onKeyDown" Closed="onClose" KeyUp="onKeyUp" WindowState="Maximized" WindowStyle="None" Left="0" Top="0">
+    <Canvas x:Name="SpelenCanvas">
+        <Rectangle
+            x:Name="Achtergrond"
+            Width="1536"
+            Height="864"
+            Fill="LightBlue"
+            />
+        <Rectangle
+            x:Name="Speler"
+            Width="37"
+            Height="49"
+            Canvas.Top="650"
+            Canvas.Left="250"
+            Fill="Red"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="500"
+            Canvas.Left="600"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="600"
+            Canvas.Left="600"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="450"
+            Canvas.Left="500"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="1600"
+            Height="164"
+            Canvas.Top="700"
+            Canvas.Left="0"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="550"
+            Canvas.Left="500"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="1600"
+            Height="164"
+            Canvas.Top="700"
+            Canvas.Left="1800"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="250"
+            Height="50"
+            Canvas.Top="500"
+            Canvas.Left="2000"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="250"
+            Height="50"
+            Canvas.Top="500"
+            Canvas.Left="1200"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="250"
+            Height="50"
+            Canvas.Top="300"
+            Canvas.Left="1200"
+            Fill="Green"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            />
+    </Canvas>
 </Window>
