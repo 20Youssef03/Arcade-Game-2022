@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\stefa\\Desktop\\Project Periode 1\\Arcade Game 2022.csproj",
+      "projectUniqueName": "C:\\Users\\stefa\\Desktop\\Arcade Game 2022\\Arcade Game 2022.csproj",
       "projectName": "Arcade Game 2022",
-      "projectPath": "C:\\Users\\stefa\\Desktop\\Project Periode 1\\Arcade Game 2022.csproj",
+      "projectPath": "C:\\Users\\stefa\\Desktop\\Arcade Game 2022\\Arcade Game 2022.csproj",
       "packagesPath": "C:\\Users\\stefa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stefa\\Desktop\\Project Periode 1\\obj\\",
+      "outputPath": "C:\\Users\\stefa\\Desktop\\Arcade Game 2022\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\stefa\\AppData\\Roaming\\NuGet\\NuGet.Config",
