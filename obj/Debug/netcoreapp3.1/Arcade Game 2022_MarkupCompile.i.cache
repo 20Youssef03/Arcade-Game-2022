@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\stefa\Desktop\Arcade Game 2022\App.xaml
-4-1309268668
+52124242144
 
-8614211601
+9-696725888
 192-1533232326
-MainWindow.xaml;Opties Window.xaml;Score Window.xaml;Spelen Window.xaml;
+MainWindow.xaml;OptiesWindow.xaml;ScoreWindow.xaml;SelectieWindow.xaml;SpelenWindow.xaml;
 
-False
+True
 

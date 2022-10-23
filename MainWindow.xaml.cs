@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Arcade_Game_2022
+namespace ArcadeGame2022
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,31 +24,40 @@ namespace Arcade_Game_2022
         public MainWindow()
         {
             InitializeComponent();
+
+            // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
+            ImageSource imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/achtergrond.png")); // /bin/Debug/netcoreapp3.1/Images/rood.png
+            Image image = new Image { Source = imageSource };
+            Grid.SetRow(image, 0);
+            Grid.SetRowSpan(image, 7);
+            Grid.SetColumn(image, 0);
+            Grid.SetColumnSpan(image, 5);
+            MainGrid.Children.Add(image);
         }
 
-        private void Main_Window_Stoppen_Button_Click(object sender, RoutedEventArgs e)
+        private void StoppenButtonClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        private void Main_Window_Opties_Button_Click(object sender, RoutedEventArgs e)
+        private void OptiesButtonClick(object sender, RoutedEventArgs e)
         {
-            Opties_Window opties_Window = new Opties_Window();
-            opties_Window.Visibility = Visibility.Visible;
+            OptiesWindow optiesWindow = new OptiesWindow(this);
+            optiesWindow.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
 
-        private void Main_Window_Score_Button_Click(object sender, RoutedEventArgs e)
+        private void HighscoresButtonClick(object sender, RoutedEventArgs e)
         {
-            Score_Window score_Window = new Score_Window();
-            score_Window.Visibility = Visibility.Visible;
+            ScoreWindow scoreWindow = new ScoreWindow(this);
+            scoreWindow.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
 
-        private void Main_Window_Spelen_Button_Click(object sender, RoutedEventArgs e)
+        private void SpelenButtonClick(object sender, RoutedEventArgs e)
         {
-            Spelen_Window spelen_Window = new Spelen_Window();
-            spelen_Window.Visibility = Visibility.Visible;
+            SelectieWindow selectieWindow = new SelectieWindow(this);
+            selectieWindow.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
     }

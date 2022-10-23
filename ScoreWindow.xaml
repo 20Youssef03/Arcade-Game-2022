@@ -1,0 +1,23 @@
+﻿<Window x:Class="ArcadeGame2022.ScoreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArcadeGame2022"
+        mc:Ignorable="d"
+        Title="ScoreWindow"
+        Height="864"
+        Width="1536"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Left="0"
+        Top="0">
+    <Grid>
+        <Button
+            x:Name="TerugButton"
+            Content="Terug"
+            FontSize="50"
+            Click="TerugButtonClick"
+            />
+    </Grid>
+</Window>
