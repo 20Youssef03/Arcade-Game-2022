@@ -24,3 +24,31 @@ C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-202
 C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\obj\Debug\netcoreapp3.1\Opties Window.baml
 C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\obj\Debug\netcoreapp3.1\Spelen Window.g.cs
 C:\Users\youss\source\repos\Project Arcade 2022\Arcade Game 2022\Arcade-Game-2022\obj\Debug\netcoreapp3.1\Spelen Window.baml
+C:\Users\stefa\Desktop\Arcade Game 2022\bin\Debug\netcoreapp3.1\Arcade Game 2022.exe
+C:\Users\stefa\Desktop\Arcade Game 2022\bin\Debug\netcoreapp3.1\Arcade Game 2022.deps.json
+C:\Users\stefa\Desktop\Arcade Game 2022\bin\Debug\netcoreapp3.1\Arcade Game 2022.runtimeconfig.json
+C:\Users\stefa\Desktop\Arcade Game 2022\bin\Debug\netcoreapp3.1\Arcade Game 2022.runtimeconfig.dev.json
+C:\Users\stefa\Desktop\Arcade Game 2022\bin\Debug\netcoreapp3.1\Arcade Game 2022.dll
+C:\Users\stefa\Desktop\Arcade Game 2022\bin\Debug\netcoreapp3.1\Arcade Game 2022.pdb
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022.csproj.AssemblyReference.cache
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022_MarkupCompile.cache
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022_MarkupCompile.lref
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022.g.resources
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022.AssemblyInfoInputs.cache
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022.AssemblyInfo.cs
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022.csproj.CoreCompileInputs.cache
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022.dll
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022.pdb
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\Arcade Game 2022.genruntimeconfig.cache
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\SelectieWindow.g.cs
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\SelectieWindow.baml
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\OptiesWindow.g.cs
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\ScoreWindow.g.cs
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\SpelenWindow.g.cs
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\OptiesWindow.baml
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\ScoreWindow.baml
+C:\Users\stefa\Desktop\Arcade Game 2022\obj\Debug\netcoreapp3.1\SpelenWindow.baml
