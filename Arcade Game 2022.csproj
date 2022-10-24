@@ -7,11 +7,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Afbeeldingen\**" />
-    <EmbeddedResource Remove="Afbeeldingen\**" />
-    <None Remove="Afbeeldingen\**" />
-    <Page Remove="Afbeeldingen\**" />
-  </ItemGroup>
-
 </Project>
