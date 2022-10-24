@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Afbeeldingen\" />
+    <Compile Remove="Afbeeldingen\**" />
+    <EmbeddedResource Remove="Afbeeldingen\**" />
+    <None Remove="Afbeeldingen\**" />
+    <Page Remove="Afbeeldingen\**" />
   </ItemGroup>
 
 </Project>
