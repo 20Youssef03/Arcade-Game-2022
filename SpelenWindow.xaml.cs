@@ -94,6 +94,8 @@ namespace ArcadeGame2022
                 HerstartLevel();
             if (e.Key == Key.D3)
                 HerstartSpel();
+            if (e.Key == Key.D9)
+                Application.Current.Shutdown();
         }
 
         /// <summary>
