@@ -13,11 +13,104 @@
         Left="0"
         Top="0">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="54"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="84"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="84"/>
+        </Grid.RowDefinitions>
         <Button
             x:Name="TerugButton"
             Content="Terug"
             FontSize="50"
             Click="TerugButtonClick"
+            Grid.Row="5"
+            Grid.Column="6"
+            Grid.ColumnSpan="3"
+            />
+        <Button
+            x:Name="DagButton"
+            Content="D"
+            FontSize="50"
+            Click="DagButtonClick"
+            Grid.Row="3"
+            Grid.Column="6"
+            />
+        <Button
+            x:Name="WeekButton"
+            Content="W"
+            FontSize="50"
+            Click="WeekButtonClick"
+            Grid.Row="3"
+            Grid.Column="7"
+            />
+        <Button
+            x:Name="MaandButton"
+            Content="M"
+            FontSize="50"
+            Click="MaandButtonClick"
+            Grid.Row="3"
+            Grid.Column="8"
+            />
+        <TextBlock
+            x:Name="TitelTekst"
+            Text="Dag scores"
+            FontSize="30"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="4"
+            TextAlignment="Center"
+            />
+        <TextBlock
+            x:Name="LijstScores"
+            Text="Tekst"
+            FontSize="30"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.RowSpan="5"
+            TextAlignment="Center"
+            />
+        <TextBlock
+            x:Name="LijstNamen"
+            Text="Tekst"
+            FontSize="30"
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.RowSpan="5"
+            TextAlignment="Center"
+            />
+        <TextBlock
+            x:Name="LijstGewonnen"
+            Text="Tekst"
+            FontSize="30"
+            Grid.Row="1"
+            Grid.Column="3"
+            Grid.RowSpan="5"
+            TextAlignment="Center"
+            />
+        <TextBlock
+            x:Name="LijstData"
+            Text="Tekst"
+            FontSize="30"
+            Grid.Row="1"
+            Grid.Column="4"
+            Grid.RowSpan="5"
+            TextAlignment="Center"
             />
     </Grid>
 </Window>

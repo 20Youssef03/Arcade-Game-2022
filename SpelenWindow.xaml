@@ -54,8 +54,8 @@
             />
         <Rectangle
             x:Name="Speler"
-            Width="37"
-            Height="49"
+            Width="32"
+            Height="69"
             Canvas.Top="651"
             Canvas.Left="200"
             Fill="Red"
