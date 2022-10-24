@@ -26,6 +26,8 @@ namespace ArcadeGame2022
         private bool jump = false;
         private float velocity = 0;
         private float gravity = 0.15f;
+        private double levelPositie = 0;
+        private double level = 0;
 
         public SpelenWindow(ImageSource imageSource)
         {
@@ -53,6 +55,8 @@ namespace ArcadeGame2022
                 }
             }
 
+            PlaatsVijanden();
+
             gameTimer.Interval = TimeSpan.FromMilliseconds(10);
             gameTimer.Tick += GameEngine;
             gameTimer.Start();
@@ -64,8 +68,15 @@ namespace ArcadeGame2022
 
             // Horizontale beweging wordt apart bepaald om te voorkomen dat de speler de verkeerde kant op wordt verplaatst
             HorizontaleBeweging();
+
+            BeweegVijanden();
         }
 
+        /// <summary>
+        /// Kijkt of de speler bepaalde toetsen indrukt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
             // Speler kan spelen met pijltjestoetsen of WASD en springen met spatie
@@ -75,13 +86,33 @@ namespace ArcadeGame2022
                 moveRight = true;
             if (e.Key == Key.Up || e.Key == Key.Space || e.Key == Key.W)
                 jump = true;
+
+            // Tijdelijk, voor debuggen
+            if (e.Key == Key.D1)
+                VolgendLevel();
+            if (e.Key == Key.D2)
+                HerstartLevel();
+            if (e.Key == Key.D3)
+                HerstartSpel();
+            if (e.Key == Key.D9)
+                Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Kijkt of de speler het venster heeft gesloten, en zo ja, sluit het hele spel af.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnClose(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Kijkt of de speler een bepaalde toets nog ingedrukt houdt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnKeyUp(object sender, KeyEventArgs e)
         {
             // Speler kan spelen met pijltjestoetsen of WASD en springen met spatie
@@ -93,6 +124,9 @@ namespace ArcadeGame2022
                 jump = false;
         }
 
+        /// <summary>
+        /// Beweegt de speler verticaal en controleert of de speler een blok van boven of onder raakt, in welk geval de speler niet verder beweegt, en laat de speler springen als de spring toets wordt ingedrukt en een blok van boven wordt geraakt.
+        /// </summary>
         private void VerticaleBeweging()
         {
             // Beweeg de speler
@@ -133,6 +167,9 @@ namespace ArcadeGame2022
             }
         }
 
+        /// <summary>
+        /// Beweegt alle blokken horizontaal en controleert of de speler een blok van de zijkant raakt, in welk geval de blokken niet bewegen.
+        /// </summary>
         private void HorizontaleBeweging()
         {
             // Beweeg de speler
@@ -143,6 +180,12 @@ namespace ArcadeGame2022
                 if (moveRight && x.Name != "Speler")
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - 4);
             }
+
+            // Houd horizontale beweging bij
+            if (moveLeft)
+                levelPositie += 4;
+            if (moveRight)
+                levelPositie -= 4;
 
             // Kijk of de speler een blok raakt
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
@@ -169,11 +212,98 @@ namespace ArcadeGame2022
                                         Canvas.SetLeft(z, blok2.Right - blok.Right + speler.Left - blok2.Width - 0.00001); // de 0.00001 voorkomt overlap voor verticale beweging
                                     }
                                 }
+                                if (speler.Left < blok.Left)
+                                    levelPositie += 4;
+                                else if (speler.Right > blok.Right)
+                                    levelPositie -= 4;
                             }
                         }
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Plaatst de speler op de grond en alle blokken terug naar de horizontale startpositie en 1000 pixels hoger, waardoor het volgende level in beeld komt.
+        /// </summary>
+        private void VolgendLevel()
+        {
+            foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
+            {
+                if (x.Name != "Speler")
+                {
+                    Canvas.SetTop(x, Canvas.GetTop(x) - 1000); // Beweeg alle blokken 1000 pixels omhoog zodat het volgende level de plaats van de vorige inneemt
+                    Canvas.SetLeft(x, Canvas.GetLeft(x) - levelPositie); // Beweeg alle blokken terug naar de horizontale startpositie
+                }
+                else
+                    Canvas.SetTop(x, 651); // Plaats speler op grond
+            }
+            level += 1;
+            LevelTekst.Text = "Level " + (level + 1);
+            levelPositie = 0; // Zet positie teller terug op 0
+            velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
+        }
+
+        /// <summary>
+        /// Plaatst de speler op de grond en alle blokken terug naar de horizontale startpositie.
+        /// </summary>
+        private void HerstartLevel()
+        {
+            foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
+            {
+                if (x.Name != "Speler")
+                {
+                    Canvas.SetLeft(x, Canvas.GetLeft(x) - levelPositie); // Beweeg alle blokken terug naar de horizontale startpositie
+                }
+                else
+                    Canvas.SetTop(x, 651); // Plaats speler op grond
+            }
+            levelPositie = 0; // Zet positie teller terug op 0
+            velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
+            PlaatsVijanden();
+        }
+
+        /// <summary>
+        /// Plaatst de speler op de grond en alle blokken terug naar de horizontale en verticale startpositie.
+        /// </summary>
+        private void HerstartSpel()
+        {
+            foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
+            {
+                if (x.Name != "Speler")
+                {
+                    Canvas.SetTop(x, Canvas.GetTop(x) + 1000 * level); // Beweeg alle blokken 1000 pixels omhoog zodat het volgende level de plaats van de vorige inneemt
+                    Canvas.SetLeft(x, Canvas.GetLeft(x) - levelPositie); // Beweeg alle blokken terug naar de horizontale startpositie
+                }
+                else
+                    Canvas.SetTop(x, 651); // Plaats speler op grond
+            }
+            level = 0;
+            LevelTekst.Text = "Level 1";
+            levelPositie = 0; // Zet positie teller terug op 0
+            velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
+            PlaatsVijanden();
+        }
+
+        private void PlaatsVijanden()
+        {
+            // Plaats vijanden in de gewenste posities
+            // Wordt uitgevoerd aan het begin en bij het resetten van een level/het spel
+        }
+
+        private void BeweegVijanden()
+        {
+            // Beweeg de vijanden als ze in beeld zijn (0 < x < 1536, 0 < y < 864)
+            // Dit zal waarschijnlijk verschillen afhangend van watvoor vijanden we willen
+        }
+
+        private void VerticaleBewegingVijanden()
+        {
+            // Net als VerticaleBeweging() maar specifiek voor de vijanden
+        }
+        private void HorizontaleBewegingVijanden()
+        {
+            // Net als HorizontaleBeweging() maar specifiek voor de vijanden
         }
     }
 }

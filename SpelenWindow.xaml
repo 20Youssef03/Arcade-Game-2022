@@ -17,17 +17,41 @@
         KeyUp="OnKeyUp">
     <Canvas x:Name="SpelenCanvas">
         <Rectangle
-            x:Name="Achtergrond"
+            x:Name="Level1Achtergrond"
             Width="1536"
             Height="864"
+            Canvas.Top="0"
+            HorizontalAlignment="Center"
             Fill="LightBlue"
+            />
+        <Rectangle
+            x:Name="Level2Achtergrond"
+            Width="1536"
+            Height="864"
+            Canvas.Top="1000"
+            HorizontalAlignment="Center"
+            Fill="LightGreen"
+            />
+        <Rectangle
+            x:Name="Level3Achtergrond"
+            Width="1536"
+            Height="864"
+            Canvas.Top="2000"
+            HorizontalAlignment="Center"
+            Fill="Pink"
+            />
+        <TextBlock
+            x:Name="LevelTekst"
+            Text="Level 1"
+            FontSize="40"
+            Canvas.Top="0"
             />
         <Rectangle
             x:Name="Speler"
             Width="37"
             Height="49"
-            Canvas.Top="655"
-            Canvas.Left="247"
+            Canvas.Top="651"
+            Canvas.Left="200"
             Fill="Red"
             />
         <Rectangle
@@ -58,7 +82,7 @@
             Tag="Blok"
             Width="1600"
             Height="164"
-            Canvas.Top="704"
+            Canvas.Top="700"
             Canvas.Left="0"
             Fill="Green"
             />
@@ -100,6 +124,22 @@
             Height="50"
             Canvas.Top="300"
             Canvas.Left="1200"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="850"
+            Height="164"
+            Canvas.Top="1700"
+            Canvas.Left="0"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="1250"
+            Height="164"
+            Canvas.Top="2700"
+            Canvas.Left="0"
             Fill="Green"
             />
     </Canvas>
