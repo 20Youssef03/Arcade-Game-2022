@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Collections;
 
 namespace ArcadeGame2022
 {
@@ -28,10 +31,14 @@ namespace ArcadeGame2022
         private float gravity = 0.15f;
         private double levelPositie = 0;
         private double level = 0;
+        private int punten = 0;
+        private string spelerNaam;
 
-        public SpelenWindow(ImageSource imageSource)
+        public SpelenWindow(ImageSource imageSource, string spelerNaam)
         {
             InitializeComponent();
+
+            this.spelerNaam = spelerNaam;
 
             // Vervangt enkele kleur rechthoeken met afbeeldingen
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
@@ -47,7 +54,7 @@ namespace ArcadeGame2022
                 {
                     x.Fill = new ImageBrush // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
                     {
-                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/brick.png")), // /bin/Debug/netcoreapp3.1/Images/brick.png
+                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/brick.png")), // /bin/Debug/netcoreapp3.1/Images/brick.png
                         TileMode = TileMode.Tile,
                         ViewportUnits = BrushMappingMode.Absolute,
                         Viewport = new Rect(0, 0, 50, 50)
@@ -94,6 +101,13 @@ namespace ArcadeGame2022
                 HerstartLevel();
             if (e.Key == Key.D3)
                 HerstartSpel();
+            if (e.Key == Key.D6)
+            {
+                punten += 1;
+                PuntenTekst.Text = punten.ToString();
+            }
+            if (e.Key == Key.D7)
+                WinSpel();
             if (e.Key == Key.D9)
                 Application.Current.Shutdown();
         }
@@ -304,6 +318,21 @@ namespace ArcadeGame2022
         private void HorizontaleBewegingVijanden()
         {
             // Net als HorizontaleBeweging() maar specifiek voor de vijanden
+        }
+
+        private void WinSpel()
+        {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\")) + "Data\\Database1.mdf\";Integrated Security=True";
+            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum]) VALUES ('{0}', '{1}', '{2}')", spelerNaam, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"));
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand();
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            
         }
     }
 }

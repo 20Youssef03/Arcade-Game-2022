@@ -46,6 +46,12 @@
             FontSize="40"
             Canvas.Top="0"
             />
+        <TextBlock
+            x:Name="PuntenTekst"
+            Text="0"
+            FontSize="40"
+            Canvas.Top="50"
+            />
         <Rectangle
             x:Name="Speler"
             Width="37"

@@ -29,10 +29,10 @@ namespace ArcadeGame2022
             SpelenButton.Background = Brushes.DarkGray;
 
             ImageSource[] imageSources = { // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
-                new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/rood.png")), // /bin/Debug/netcoreapp3.1/Images/rood.png
-                new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/blauw.png")), // /bin/Debug/netcoreapp3.1/Images/blauw.png
-                new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/groen.png")), // /bin/Debug/netcoreapp3.1/Images/groen.png
-                new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/geel.png")) // /bin/Debug/netcoreapp3.1/Images/geel.png
+                new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/rood.png")), // /bin/Debug/netcoreapp3.1/Images/rood.png
+                new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/blauw.png")), // /bin/Debug/netcoreapp3.1/Images/blauw.png
+                new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/groen.png")), // /bin/Debug/netcoreapp3.1/Images/groen.png
+                new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/geel.png")) // /bin/Debug/netcoreapp3.1/Images/geel.png
             };
             for (int i = 0; i < 4; i++)
             {
@@ -67,7 +67,7 @@ namespace ArcadeGame2022
         {
             if (SpelenButton.Background == Brushes.LightGray)
             {
-                SpelenWindow spelenWindow = new SpelenWindow(imageSource);
+                SpelenWindow spelenWindow = new SpelenWindow(imageSource, "Stefan");
                 spelenWindow.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Hidden;
             }
@@ -75,7 +75,7 @@ namespace ArcadeGame2022
 
         private void Optie1Click(object sender, RoutedEventArgs e)
         { // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
-            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/rood.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
+            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/rood.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
             Optie1.Background = new SolidColorBrush(Color.FromArgb(51, 255, 0, 0));
             Optie2.Background = Brushes.Transparent;
             Optie3.Background = Brushes.Transparent;
@@ -84,7 +84,7 @@ namespace ArcadeGame2022
         }
         private void Optie2Click(object sender, RoutedEventArgs e)
         { // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
-            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/blauw.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
+            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/blauw.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
             Optie1.Background = Brushes.Transparent;
             Optie2.Background = new SolidColorBrush(Color.FromArgb(51, 255, 0, 0));
             Optie3.Background = Brushes.Transparent;
@@ -93,7 +93,7 @@ namespace ArcadeGame2022
         }
         private void Optie3Click(object sender, RoutedEventArgs e)
         {
-            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/groen.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
+            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/groen.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
             Optie1.Background = Brushes.Transparent;
             Optie2.Background = Brushes.Transparent;
             Optie3.Background = new SolidColorBrush(Color.FromArgb(51, 255, 0, 0));
@@ -102,7 +102,7 @@ namespace ArcadeGame2022
         }
         private void Optie4Click(object sender, RoutedEventArgs e)
         {
-            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/geel.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
+            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/geel.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
             Optie1.Background = Brushes.Transparent;
             Optie2.Background = Brushes.Transparent;
             Optie3.Background = Brushes.Transparent;
