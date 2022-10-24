@@ -67,7 +67,7 @@ namespace ArcadeGame2022
                     dagen = "0";
                     break;
             }
-            string query = String.Format("SELECT [Speler], [Score], [Gewonnen], [Datum], datediff(day, [Datum], getdate()) FROM [Highscores] WHERE datediff(day, [Datum], getdate()) < -" + dagen + " ORDER BY [Score] desc");
+            string query = String.Format("SELECT [Speler], [Score], [Gewonnen], [Datum], datediff(day, [Datum], getdate()) FROM [Highscores] WHERE datediff(day, [Datum], getdate()) < " + dagen + " ORDER BY [Score] desc");
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
             try
@@ -85,7 +85,7 @@ namespace ArcadeGame2022
                 while (reader.Read())
                 {
                     lijstNamen += "\n" + reader.GetString(0);
-                    lijstScores += "\n" + reader.GetInt32(4);
+                    lijstScores += "\n" + reader.GetInt32(1);
                     lijstGewonnen += "\n" + reader.GetString(2);
                     lijstData += "\n" + reader.GetDateTime(3).ToString("yyyy-MM-dd");
                 }
