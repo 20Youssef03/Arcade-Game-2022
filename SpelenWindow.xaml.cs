@@ -323,16 +323,22 @@ namespace ArcadeGame2022
         private void WinSpel()
         {
             string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\")) + "Data\\Database1.mdf\";Integrated Security=True";
-            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum]) VALUES ('{0}', '{1}', '{2}')", spelerNaam, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"));
+            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", spelerNaam, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
+            try
+            {
                 command.CommandText = query;
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
                 connection.Open();
                 command.ExecuteNonQuery();
                 connection.Close();
-            
+            }
+            catch (IOException)
+            {
+                connection.Close();
+            }
         }
     }
 }

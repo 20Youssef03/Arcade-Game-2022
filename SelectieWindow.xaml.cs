@@ -29,7 +29,7 @@ namespace ArcadeGame2022
             SpelenButton.Background = Brushes.DarkGray;
 
             ImageSource[] imageSources = { // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
-                new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/rood.png")), // /bin/Debug/netcoreapp3.1/Images/rood.png
+                new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/roze.png")), // /bin/Debug/netcoreapp3.1/Images/rood.png
                 new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/blauw.png")), // /bin/Debug/netcoreapp3.1/Images/blauw.png
                 new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/groen.png")), // /bin/Debug/netcoreapp3.1/Images/groen.png
                 new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/geel.png")) // /bin/Debug/netcoreapp3.1/Images/geel.png
@@ -75,7 +75,7 @@ namespace ArcadeGame2022
 
         private void Optie1Click(object sender, RoutedEventArgs e)
         { // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
-            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/rood.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
+            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/roze.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
             Optie1.Background = new SolidColorBrush(Color.FromArgb(51, 255, 0, 0));
             Optie2.Background = Brushes.Transparent;
             Optie3.Background = Brushes.Transparent;
