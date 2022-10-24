@@ -61,7 +61,7 @@ namespace ArcadeGame2022 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Arcade Game 2022;V1.0.0.0;component/scorewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Arcade Game 2022;component/scorewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ScoreWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
