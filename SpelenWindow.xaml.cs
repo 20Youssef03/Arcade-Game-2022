@@ -32,13 +32,15 @@ namespace ArcadeGame2022
         private double levelPositie = 0;
         private double level = 0;
         private int punten = 0;
-        private string spelerNaam;
+        private string spelerNaam1;
+        private string spelerNaam2;
 
-        public SpelenWindow(ImageSource imageSource, string spelerNaam)
+        public SpelenWindow(ImageSource imageSource1, ImageSource imageSource2, string spelerNaam1, string spelerNaam2)
         {
             InitializeComponent();
 
-            this.spelerNaam = spelerNaam;
+            this.spelerNaam1 = spelerNaam1;
+            this.spelerNaam2 = spelerNaam2;
 
             // Vervangt enkele kleur rechthoeken met afbeeldingen
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
@@ -47,7 +49,7 @@ namespace ArcadeGame2022
                 {
                     x.Fill = new ImageBrush
                     {
-                        ImageSource = imageSource
+                        ImageSource = imageSource1
                     };
                 }
                 else if ((string)x.Tag == "Blok")
@@ -100,7 +102,7 @@ namespace ArcadeGame2022
             if (e.Key == Key.D2)
                 HerstartLevel();
             if (e.Key == Key.D3)
-                HerstartSpel();
+                HerstartSpel(null, null);
             if (e.Key == Key.D6)
             {
                 punten += 1;
@@ -250,7 +252,7 @@ namespace ArcadeGame2022
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - levelPositie); // Beweeg alle blokken terug naar de horizontale startpositie
                 }
                 else
-                    Canvas.SetTop(x, 651); // Plaats speler op grond
+                    Canvas.SetTop(x, 631); // Plaats speler op grond
             }
             level += 1;
             LevelTekst.Text = "Level " + (level + 1);
@@ -270,7 +272,7 @@ namespace ArcadeGame2022
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - levelPositie); // Beweeg alle blokken terug naar de horizontale startpositie
                 }
                 else
-                    Canvas.SetTop(x, 651); // Plaats speler op grond
+                    Canvas.SetTop(x, 631); // Plaats speler op grond
             }
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
@@ -280,7 +282,7 @@ namespace ArcadeGame2022
         /// <summary>
         /// Plaatst de speler op de grond en alle blokken terug naar de horizontale en verticale startpositie.
         /// </summary>
-        private void HerstartSpel()
+        private void HerstartSpel(object sender, RoutedEventArgs e)
         {
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
             {
@@ -290,7 +292,7 @@ namespace ArcadeGame2022
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - levelPositie); // Beweeg alle blokken terug naar de horizontale startpositie
                 }
                 else
-                    Canvas.SetTop(x, 651); // Plaats speler op grond
+                    Canvas.SetTop(x, 631); // Plaats speler op grond
             }
             level = 0;
             LevelTekst.Text = "Level 1";
@@ -323,16 +325,28 @@ namespace ArcadeGame2022
         private void WinSpel()
         {
             string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\")) + "Data\\Database1.mdf\";Integrated Security=True";
-            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", spelerNaam, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
+            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", spelerNaam1, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
+            string query2 = "";
+            if (spelerNaam2 != null)
+                query2 = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", spelerNaam2, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
+            SqlCommand command2 = new SqlCommand();
             try
             {
                 command.CommandText = query;
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
+                if (query2 != "")
+                {
+                    command2.CommandText = query2;
+                    command2.CommandType = CommandType.Text;
+                    command2.Connection = connection;
+                }
                 connection.Open();
                 command.ExecuteNonQuery();
+                if (query2 != "")
+                    command2.ExecuteNonQuery();
                 connection.Close();
             }
             catch (IOException)

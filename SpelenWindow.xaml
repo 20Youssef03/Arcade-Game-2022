@@ -56,7 +56,7 @@
             x:Name="Speler"
             Width="32"
             Height="69"
-            Canvas.Top="651"
+            Canvas.Top="631"
             Canvas.Left="200"
             Fill="Red"
             />
@@ -147,6 +147,10 @@
             Canvas.Top="2700"
             Canvas.Left="0"
             Fill="Green"
+            />
+        <Button
+            Content="Reset"
+            Click="HerstartSpel"
             />
     </Canvas>
 </Window>

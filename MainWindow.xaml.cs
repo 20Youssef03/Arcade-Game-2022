@@ -26,7 +26,7 @@ namespace ArcadeGame2022
             InitializeComponent();
 
             // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
-            ImageSource imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/achtergrond.png")); // /bin/Debug/netcoreapp3.1/Images/rood.png
+            ImageSource imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/achtergrond.png")); // /bin/Debug/netcoreapp3.1/Images/achtergrond.png
             Image image = new Image { Source = imageSource };
             Grid.SetRow(image, 0);
             Grid.SetRowSpan(image, 7);
