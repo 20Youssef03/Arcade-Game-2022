@@ -31,7 +31,7 @@
         </Grid.RowDefinitions>
         <TextBlock
             Panel.ZIndex="1"
-            Text="Spelnaam"
+            Text="Jumping Jack"
             FontSize="100"
             Grid.Column="1"
             Grid.Row="0"

@@ -14,17 +14,21 @@ using System.Windows.Shapes;
 namespace ArcadeGame2022
 {
     /// <summary>
-    /// Interaction logic for SelectieWindow.xaml
+    /// Interaction logic for SelectieWindow2.xaml
     /// </summary>
-    public partial class SelectieWindow : Window
+    public partial class SelectieWindow2 : Window
     {
         Window window;
-        ImageSource imageSource;
-        int aantalSpelers = 1;
+        ImageSource imageSource1;
+        ImageSource imageSource2;
+        string spelerNaam1;
 
-        public SelectieWindow(Window window)
+        public SelectieWindow2(Window window, ImageSource imageSource1, string spelerNaam1)
         {
             this.window = window;
+            this.imageSource1 = imageSource1;
+            this.spelerNaam1 = spelerNaam1;
+
             InitializeComponent();
 
             SpelenButton.Background = new SolidColorBrush(Color.FromArgb(153, 0, 0, 0));
@@ -56,7 +60,7 @@ namespace ArcadeGame2022
                     Grid.SetColumn(image, 4);
                     Grid.SetColumnSpan(image, 1);
                 }
-                SelectieGrid.Children.Add(image);
+                SelectieGrid2.Children.Add(image);
             }
         }
 
@@ -68,23 +72,17 @@ namespace ArcadeGame2022
 
         private void SpelenButtonClick(object sender, RoutedEventArgs e)
         {
-            if (SpelenButton.Background == Brushes.LightGray && aantalSpelers == 1)
+            if (SpelenButton.Background == Brushes.LightGray)
             {
-                SpelenWindow spelenWindow = new SpelenWindow(imageSource, null, NaamInvoer.Text, null);
+                SpelenWindow spelenWindow = new SpelenWindow(imageSource1, imageSource2, spelerNaam1, NaamInvoer.Text);
                 spelenWindow.Visibility = Visibility.Visible;
-                this.Visibility = Visibility.Hidden;
-            }
-            else if (SpelenButton.Background == Brushes.LightGray)
-            {
-                SelectieWindow2 selectieWindow2 = new SelectieWindow2(this, imageSource, NaamInvoer.Text);
-                selectieWindow2.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Hidden;
             }
         }
 
         private void Optie1Click(object sender, RoutedEventArgs e)
         { // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
-            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/roze.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
+            imageSource2 = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/roze.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
             ResetKeuze();
             Optie1.Fill = new SolidColorBrush(Color.FromArgb(153, 255, 0, 255));
             Optie1Button.Opacity = 1.0;
@@ -94,7 +92,7 @@ namespace ArcadeGame2022
         }
         private void Optie2Click(object sender, RoutedEventArgs e)
         { // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
-            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/blauw.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
+            imageSource2 = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/blauw.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
             ResetKeuze();
             Optie2.Fill = new SolidColorBrush(Color.FromArgb(153, 0, 0, 255));
             Optie2Button.Opacity = 1.0;
@@ -104,7 +102,7 @@ namespace ArcadeGame2022
         }
         private void Optie3Click(object sender, RoutedEventArgs e)
         {
-            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/groen.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
+            imageSource2 = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/groen.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
             ResetKeuze();
             Optie3.Fill = new SolidColorBrush(Color.FromArgb(153, 0, 255, 0));
             Optie3Button.Opacity = 1.0;
@@ -114,27 +112,13 @@ namespace ArcadeGame2022
         }
         private void Optie4Click(object sender, RoutedEventArgs e)
         {
-            imageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/geel.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
+            imageSource2 = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/geel.png")); // /bin/Debug/netcoreapp3.1/Images/mario.png
             ResetKeuze();
             Optie4.Fill = new SolidColorBrush(Color.FromArgb(153, 255, 255, 0));
             Optie4Button.Opacity = 1.0;
             Optie4Button.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 0, 255));
             if (NaamInvoer.Text != "" && NaamInvoer.Text != "Naam..." && NaamInvoer.Text.Length <= 10)
                 SpelenButton.Background = Brushes.LightGray;
-        }
-        private void EenSpelerButtonClick(object sender, RoutedEventArgs e)
-        {
-            EenSpelerButton.Background = new SolidColorBrush(Color.FromArgb(153, 0, 255, 0));
-            TweeSpelersButton.Background = Brushes.LightGray;
-            SpelenButton.Content = "Spelen";
-            aantalSpelers = 1;
-        }
-        private void TweeSpelersButtonClick(object sender, RoutedEventArgs e)
-        {
-            EenSpelerButton.Background = Brushes.LightGray;
-            TweeSpelersButton.Background = new SolidColorBrush(Color.FromArgb(153, 0, 255, 0));
-            SpelenButton.Content = "Volgende";
-            aantalSpelers = 2;
         }
 
         private void ResetKeuze()
@@ -156,7 +140,7 @@ namespace ArcadeGame2022
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
             NaamInvoer.Foreground = Brushes.Black;
-            if (imageSource != null)
+            if (imageSource2 != null)
                 SpelenButton.Background = Brushes.LightGray;
             if (NaamInvoer.Text.Length > 10)
             {
