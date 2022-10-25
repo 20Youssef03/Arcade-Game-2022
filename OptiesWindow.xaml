@@ -7,17 +7,49 @@
         mc:Ignorable="d"
         Title="OptiesWindow"
         Height="864"
-        Width="1536"
+        Width="1578"
         WindowState="Maximized"
         WindowStyle="None"
         Left="0"
         Top="0">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
         <Button
             x:Name="TerugButton"
             Content="Terug"
-            FontSize="50"
-            Click="TerugButtonClick"
-            />
+            FontSize="60"
+            Click="TerugButtonClick" Margin="59,620,1288,145" RenderTransformOrigin="0.495,0.773" Background="{x:Null}" FontFamily="Impact" FontWeight="Bold" BorderBrush="Black" BorderThickness="5,5,5,5"
+            >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.379"/>
+                    <TranslateTransform X="-0.179" Y="-0.002"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Border x:Name="Border_1" BorderThickness="6,6,6,6" BorderBrush="Black" Margin="349,139,349,75"/>
+        <Label x:Name="Label_1" Content="     Opties" HorizontalAlignment="Center" Margin="0,31,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold" FontFamily="Impact" BorderThickness="5,5,5,5" Width="348" Height="108">
+            <Label.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.BorderBrush>
+        </Label>
+        <Label x:Name="Label_Geluid" Content="Geluid" HorizontalAlignment="Left" Margin="482,422,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" FontFamily="Impact" Width="185"/>
+        <Label x:Name="Label_SoundEffects" Content="Sound Effects" HorizontalAlignment="Left" Margin="482,570,0,0" VerticalAlignment="Top" FontSize="60" FontFamily="Impact" FontWeight="Bold"/>
+        <Label x:Name="Label_Muziek" Content="Muziek" HorizontalAlignment="Left" Margin="482,266,0,0" VerticalAlignment="Top" FontFamily="Impact" FontSize="60" FontWeight="Bold"/>
+        <Button x:Name="ButtonHelp" Content="Help" HorizontalAlignment="Left" Margin="1285,620,0,0" VerticalAlignment="Top" FontFamily="Impact" FontSize="60" FontWeight="Bold" BorderBrush="Black" BorderThickness="5,5,5,5" Background="{x:Null}" Width="230" Height="106"/>
+        <Button x:Name="CheckboxMuziekButton1" Content="" HorizontalAlignment="Left" Margin="925,266,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="83" Width="79" BorderBrush="Black" BorderThickness="5,5,5,5" FontWeight="Normal" FontFamily="Impact" FontSize="60"/>
+        <Button x:Name="CheckboxMuziekButton2" Content="" HorizontalAlignment="Left" Margin="1009,266,0,0" VerticalAlignment="Top" Height="83" Width="79" Background="{x:Null}" FontFamily="Impact" FontSize="60" FontWeight="Bold" BorderThickness="5,5,5,5" BorderBrush="Black"/>
+        <Button x:Name="CheckboxGeluidButton1" Content="" HorizontalAlignment="Left" Margin="925,420,0,0" VerticalAlignment="Top" Height="84" Width="79" Background="{x:Null}" BorderBrush="Black" BorderThickness="5,5,5,5" FontFamily="Impact" FontSize="60" FontWeight="Bold"/>
+        <Button x:Name="CheckboxGeluidButton2" Content="" HorizontalAlignment="Left" Margin="1009,421,0,0" VerticalAlignment="Top" Height="83" Width="79" Background="{x:Null}" BorderBrush="Black" BorderThickness="5,5,5,5" FontFamily="Impact" FontSize="60" FontWeight="Bold"/>
+        <Button x:Name="CheckboxSoundEffectsButton1" Content="" HorizontalAlignment="Left" Margin="925,569,0,0" VerticalAlignment="Top" Height="83" Width="79" Background="{x:Null}" BorderBrush="Black" BorderThickness="5,5,5,5" FontWeight="Normal" FontFamily="Impact" FontSize="60"/>
+        <Button x:Name="CheckboxSoundEffectsButton2" Content="" HorizontalAlignment="Left" Margin="1009,570,0,0" VerticalAlignment="Top" Height="83" Width="79" Background="{x:Null}" BorderBrush="Black" BorderThickness="5,5,5,5" FontFamily="Impact" FontSize="60" FontWeight="Bold"/>
     </Grid>
 </Window>
