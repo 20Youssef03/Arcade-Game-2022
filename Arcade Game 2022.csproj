@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\—Pngtree—high sound vector icon_3791377.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\—Pngtree—high sound vector icon_3791377.png" />
   </ItemGroup>
 
 </Project>
