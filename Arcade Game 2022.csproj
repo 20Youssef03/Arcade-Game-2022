@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\—Pngtree—high sound vector icon_3791377.png" />
+    <None Remove="achtergrond.png" />
+    <None Remove="video-game-doodle-wasd-keyboard-keys-used-pc-games-gaming-concept-235629200.jpg" />
+    <None Remove="wasd-keys-png-wasd-keys-11562858827u3bz8nzi7e.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\—Pngtree—high sound vector icon_3791377.png" />
+    <Resource Include="achtergrond.png" />
+    <Resource Include="video-game-doodle-wasd-keyboard-keys-used-pc-games-gaming-concept-235629200.jpg" />
+    <Resource Include="wasd-keys-png-wasd-keys-11562858827u3bz8nzi7e.png" />
   </ItemGroup>
 
 </Project>
