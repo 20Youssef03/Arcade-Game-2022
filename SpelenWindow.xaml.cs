@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Collections;
+using System.Media;
 
 namespace ArcadeGame2022
 {
@@ -56,7 +57,7 @@ namespace ArcadeGame2022
                 {
                     x.Fill = new ImageBrush // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
                     {
-                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/brick.png")), // /bin/Debug/netcoreapp3.1/Images/brick.png
+                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/gras blok platform.jpg")), // /bin/Debug/netcoreapp3.1/Images/gras blok platform.png
                         TileMode = TileMode.Tile,
                         ViewportUnits = BrushMappingMode.Absolute,
                         Viewport = new Rect(0, 0, 50, 50)
@@ -353,6 +354,14 @@ namespace ArcadeGame2022
             {
                 connection.Close();
             }
+        }
+
+        private void Button_click (object sender, RoutedEventArgs e)
+        {
+            SoundPlayer player = new SoundPlayer(@"\Singing nightingale. The best bird song..wav");
+            player.Load();
+            player.Play();
+            //achtergrond muziek wordt afgespeeld na klikken op geluidsknop 
         }
     }
 }
