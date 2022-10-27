@@ -16,14 +16,10 @@
         Closed="OnClose"
         KeyUp="OnKeyUp">
     <Canvas x:Name="SpelenCanvas">
-        <Rectangle
-            x:Name="Level1Achtergrond"
-            Width="1536"
-            Height="864"
-            Canvas.Top="0"
-            HorizontalAlignment="Center"
-            Fill="LightBlue"
-            />
+        <Image
+                Width="1611"
+                Height="868"
+                Source="C:\Users\Lavar\source\repos\New folder (6)\Images\achtergrond.png" HorizontalAlignment="Left" Canvas.Left="-7" VerticalAlignment="Top" Canvas.Top="-109" />
         <Rectangle
             x:Name="Level2Achtergrond"
             Width="1536"
