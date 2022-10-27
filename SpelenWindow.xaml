@@ -152,5 +152,11 @@
             Content="Reset"
             Click="HerstartSpel"
             />
+        <Button Canvas.Left="1387" Height="103" Width="139" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_click">
+            <Image
+                Width="200"
+                Height="100"
+                Source="C:\Users\Lavar\Pictures\png-clipart-computer-icons-sound-sound-logo-monochrome.png" />
+        </Button>
     </Canvas>
 </Window>
