@@ -148,11 +148,11 @@
             Content="Reset"
             Click="HerstartSpel"
             />
-        <Button Canvas.Left="1441" Height="93" Width="117" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_click" RenderTransformOrigin="-1.892,4.239">
+        <Button Canvas.Left="1424" Height="93" Width="102" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_click" RenderTransformOrigin="-1.892,4.239">
             <Image
                 Width="117"
                 Height="93"
-                Source="\—Pngtree—high sound vector icon_3791377.png" />
+                Source="\—Pngtree—high sound vector icon_3791377.png" Canvas.Left="1409" Canvas.Top="-13" />
         </Button>
     </Canvas>
 </Window>
