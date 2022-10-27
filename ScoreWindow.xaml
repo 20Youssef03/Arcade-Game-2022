@@ -13,6 +13,9 @@
         Left="0"
         Top="0">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/achtergrond.png"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -41,7 +44,7 @@
             Click="TerugButtonClick"
             Grid.Row="5"
             Grid.Column="6"
-            Grid.ColumnSpan="3"
+            Grid.ColumnSpan="3" BorderBrush="White" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Impact" FontWeight="Bold" Background="{x:Null}"
             />
         <Button
             x:Name="DagButton"
@@ -49,7 +52,7 @@
             FontSize="50"
             Click="DagButtonClick"
             Grid.Row="3"
-            Grid.Column="6"
+            Grid.Column="6" Foreground="White" FontFamily="Impact" FontWeight="Bold" BorderBrush="White" BorderThickness="5,5,5,5" Background="{x:Null}"
             />
         <Button
             x:Name="WeekButton"
@@ -57,7 +60,7 @@
             FontSize="50"
             Click="WeekButtonClick"
             Grid.Row="3"
-            Grid.Column="7"
+            Grid.Column="7" Foreground="White" FontFamily="Impact" FontWeight="Bold" BorderBrush="White" BorderThickness="5,5,5,5" Background="{x:Null}"
             />
         <Button
             x:Name="MaandButton"
@@ -65,7 +68,7 @@
             FontSize="50"
             Click="MaandButtonClick"
             Grid.Row="3"
-            Grid.Column="8"
+            Grid.Column="8" Foreground="White" FontFamily="Impact" FontWeight="Bold" BorderBrush="White" BorderThickness="5,5,5,5" Background="{x:Null}"
             />
         <TextBlock
             x:Name="TitelTekst"
@@ -74,7 +77,7 @@
             Grid.Row="1"
             Grid.Column="1"
             Grid.ColumnSpan="4"
-            TextAlignment="Center"
+            TextAlignment="Center" Foreground="White" FontFamily="Impact" FontWeight="Bold"
             />
         <TextBlock
             x:Name="LijstScores"
@@ -83,7 +86,7 @@
             Grid.Row="1"
             Grid.Column="1"
             Grid.RowSpan="5"
-            TextAlignment="Center"
+            TextAlignment="Center" Foreground="White" FontFamily="Impact"
             />
         <TextBlock
             x:Name="LijstNamen"
@@ -92,7 +95,7 @@
             Grid.Row="1"
             Grid.Column="2"
             Grid.RowSpan="5"
-            TextAlignment="Center"
+            TextAlignment="Center" Foreground="White" FontFamily="Impact" FontWeight="Bold"
             />
         <TextBlock
             x:Name="LijstGewonnen"
@@ -101,7 +104,7 @@
             Grid.Row="1"
             Grid.Column="3"
             Grid.RowSpan="5"
-            TextAlignment="Center"
+            TextAlignment="Center" Foreground="White" FontFamily="Impact" FontWeight="Bold"
             />
         <TextBlock
             x:Name="LijstData"
@@ -110,7 +113,7 @@
             Grid.Row="1"
             Grid.Column="4"
             Grid.RowSpan="5"
-            TextAlignment="Center"
+            TextAlignment="Center" Foreground="White" FontFamily="Impact" FontWeight="Bold"
             />
     </Grid>
 </Window>
