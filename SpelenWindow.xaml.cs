@@ -358,7 +358,8 @@ namespace ArcadeGame2022
 
         private void Button_click (object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(@"C:\School\Arcade Game\Singing nightingale. The best bird song..wav");
+            SoundPlayer player = new SoundPlayer(@"\Singing nightingale. The best bird song..wav");
+            player.Load();
             player.Play();
             //achtergrond muziek wordt afgespeeld na klikken op geluidsknop 
         }
