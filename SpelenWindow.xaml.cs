@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Collections;
 using System.Media;
+using System.DirectoryServices;
+using System.Windows.Markup;
 
 namespace ArcadeGame2022
 {
@@ -35,7 +37,7 @@ namespace ArcadeGame2022
         private int punten = 0;
         private string spelerNaam1;
         private string spelerNaam2;
-
+   
         public SpelenWindow(ImageSource imageSource1, ImageSource imageSource2, string spelerNaam1, string spelerNaam2)
         {
             InitializeComponent();
@@ -235,10 +237,26 @@ namespace ArcadeGame2022
                                     levelPositie -= 4;
                             }
                         }
+                        
+                        
+                        if ((string)y.Tag == "Munt")
+                        {
+                            Rect Munt = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                            if (speler.IntersectsWith(Munt))
+                            {
+                                punten += 1;
+                                PuntenTekst.Text = punten.ToString();
+                              
+                            }
+                        }
+                        
                     }
+                    
                 }
             }
         }
+
+     
 
         /// <summary>
         /// Plaatst de speler op de grond en alle blokken terug naar de horizontale startpositie en 1000 pixels hoger, waardoor het volgende level in beeld komt.
@@ -278,6 +296,8 @@ namespace ArcadeGame2022
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
             PlaatsVijanden();
+            punten = 0;
+            PuntenTekst.Text = punten.ToString(); //reset de punten naar 0 
         }
 
         /// <summary>
@@ -300,6 +320,8 @@ namespace ArcadeGame2022
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
             PlaatsVijanden();
+            punten = 0;
+            PuntenTekst.Text = punten.ToString(); //reset de punten naar 0
         }
 
         private void PlaatsVijanden()
@@ -356,9 +378,9 @@ namespace ArcadeGame2022
             }
         }
 
-        private void Button_click (object sender, RoutedEventArgs e)
+        private void Button_click(object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(@"\Singing nightingale. The best bird song..wav");
+            SoundPlayer player = new SoundPlayer(@"C:\Users\Lavar\source\repos\New folder (10)\Singing nightingale. The best bird song..wav");
             player.Load();
             player.Play();
             //achtergrond muziek wordt afgespeeld na klikken op geluidsknop 

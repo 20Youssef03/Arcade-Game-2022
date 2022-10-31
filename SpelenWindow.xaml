@@ -154,5 +154,13 @@
                 Height="93"
                 Source="\—Pngtree—high sound vector icon_3791377.png" Canvas.Left="1409" Canvas.Top="-13" />
         </Button>
+        <Rectangle Tag="Munt" Height="35" Width="35" Fill="Gold" Canvas.Left="1236" Canvas.Top="450" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Rectangle Tag="Munt" Height="35" Width="34" Fill="Gold" Canvas.Left="1301" Canvas.Top="450" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Rectangle Tag="Munt" Height="35" Width="35" Fill="Gold" Canvas.Left="1378" Canvas.Top="450" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Rectangle Tag="Munt" Height="35" Width="35" Fill="Gold" Canvas.Left="1236" Canvas.Top="234" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Rectangle Tag="Munt" Height="35" Width="34" Fill="Gold" Canvas.Left="1301" Canvas.Top="234" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Rectangle Tag="Munt" Height="35" Width="35" Fill="Gold" Canvas.Left="1378" Canvas.Top="234" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="508" Canvas.Top="216" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Rectangle Tag="Munt" Height="35" Width="34" Fill="Gold" Canvas.Left="608" Canvas.Top="290" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Center" />
     </Canvas>
 </Window>
