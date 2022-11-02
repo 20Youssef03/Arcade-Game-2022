@@ -278,6 +278,14 @@ namespace ArcadeGame2022
                                 VolgendLevel();
                             }
                         }
+                        if((string)y.Tag == "End")
+                        {
+                            Rect End = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                            if (speler.IntersectsWith(End))
+                            {
+                                WinSpel();
+                            }
+                        }
                     }
                 }
             }

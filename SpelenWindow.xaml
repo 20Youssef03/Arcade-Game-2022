@@ -22,18 +22,16 @@
                 Source="\achtergrond.png" HorizontalAlignment="Left" Canvas.Left="-7" VerticalAlignment="Top" Canvas.Top="-109" />
         <Rectangle
             x:Name="Level2Achtergrond"
-            Width="1536"
+            Width="3400"
             Height="864"
             Canvas.Top="1000"
-            HorizontalAlignment="Center"
             Fill="LightGreen"
             />
         <Rectangle
             x:Name="Level3Achtergrond"
-            Width="1536"
+            Width="3400"
             Height="864"
             Canvas.Top="2000"
-            HorizontalAlignment="Center"
             Fill="Pink"
             />
         <TextBlock
@@ -45,8 +43,8 @@
         <TextBlock
             x:Name="PuntenTekst"
             Text="0"
-            FontSize="40"
-            Canvas.Top="50"
+            FontSize="36"
+            Canvas.Top="50" Foreground="White" FontFamily="Impact"
             />
         <Rectangle
             x:Name="Speler"
@@ -107,9 +105,9 @@
         <Rectangle
             Tag="Blok"
             Width="250"
-            Height="50"
-            Canvas.Top="500"
-            Canvas.Left="2000"
+            Height="464"
+            Canvas.Top="86"
+            Canvas.Left="1969"
             Fill="Green"
             />
         <Rectangle
@@ -130,7 +128,7 @@
             />
         <Rectangle
             Tag="Blok"
-            Width="850"
+            Width="343"
             Height="164"
             Canvas.Top="1700"
             Canvas.Left="0"
@@ -138,7 +136,7 @@
             />
         <Rectangle
             Tag="Blok"
-            Width="1250"
+            Width="1003"
             Height="164"
             Canvas.Top="2700"
             Canvas.Left="0"
@@ -147,8 +145,8 @@
         <Rectangle
             Tag="Finish"
             Width="50"
-            Height="813"
-            Canvas.Top="-109"
+            Height="507"
+            Canvas.Top="93"
             Canvas.Left="3350"
             Fill="White"
             />
@@ -176,11 +174,375 @@
         <TextBlock Tag="Dood" FontSize="80" FontWeight="Bold" FontStyle="Italic" Canvas.Left="70" Canvas.Top="300" Height="185" Width="1460" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden">
   Je bent dood, begin het level opnieuw
         </TextBlock>
-        <Rectangle Tag="Obstakel" Height="69" Width="185" Fill="Purple" Canvas.Left="1601" Canvas.Top="873" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Rectangle Tag="Obstakel" Height="69" Width="224" Fill="Purple" Canvas.Left="1586" Canvas.Top="873" RenderTransformOrigin="18.651,14.24" />
         <Rectangle Tag="Obstakel" Height="69" Width="71" Fill="Purple" Canvas.Left="889" Canvas.Top="631" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Rectangle Tag="Obstakel" Height="70" Width="59" Fill="Purple" Canvas.Left="1530" Canvas.Top="392" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Rectangle Tag="Obstakel" Height="43" Width="46" Fill="Purple" Canvas.Left="496" Canvas.Top="325" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Button x:Name="Stop_Button_Speel_Window" Content="Stoppen" Canvas.Left="241" Canvas.Top="3" Height="48" Width="102" Background="{x:Null}" BorderBrush="White" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="20" Click="Stop_Button_Speel_Window_Click"/>
+        <Rectangle
+            Tag="Blok"
+            Width="194"
+            Height="341"
+            Canvas.Top="86"
+            Canvas.Left="1800"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="151"
+            Height="418"
+            Canvas.Top="316"
+            Canvas.Left="2519"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="1201"
+            Height="7"
+            Canvas.Top="86"
+            Canvas.Left="2199"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="150"
+            Height="389"
+            Canvas.Top="86"
+            Canvas.Left="2981"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="113"
+            Height="50"
+            Canvas.Top="550"
+            Canvas.Left="2423"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="106"
+            Height="50"
+            Canvas.Top="412"
+            Canvas.Left="2199"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="149"
+            Height="50"
+            Canvas.Top="316"
+            Canvas.Left="2467"
+            Fill="Green"
+            />
+        <Rectangle Tag="Munt" Height="35" Width="35" Fill="Gold" Canvas.Left="1897" Canvas.Top="475" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="35" Width="35" Fill="Gold" Canvas.Left="1833" Canvas.Top="475" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="35" Width="36" Fill="Gold" Canvas.Left="2462" Canvas.Top="648" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="36" Width="36" Fill="Gold" Canvas.Left="2462" Canvas.Top="398" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="35" Width="36" Fill="Gold" Canvas.Left="2234" Canvas.Top="126" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="35" Width="35" Fill="Gold" Canvas.Left="2294" Canvas.Top="126" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="35" Width="35" Fill="Gold" Canvas.Left="2922" Canvas.Top="126" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="35" Width="35" Fill="Gold" Canvas.Left="2922" Canvas.Top="199" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="150"
+            Height="28"
+            Canvas.Top="252"
+            Canvas.Left="2906"
+            Fill="Green"
+            />
+        <Rectangle Tag="Munt" Height="36" Width="35" Fill="Gold" Canvas.Left="3153" Canvas.Top="280" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="34" Width="35" Fill="Gold" Canvas.Left="3153" Canvas.Top="358" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="175"
+            Height="38"
+            Canvas.Top="437"
+            Canvas.Left="3038"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="132"
+            Height="129"
+            Canvas.Top="600"
+            Canvas.Left="3268"
+            Fill="Green"
+            />
+        <Rectangle Tag="Obstakel" Height="70" Width="214" Fill="Purple" Canvas.Left="2670" Canvas.Top="648" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="70" Width="250" Fill="Purple" Canvas.Left="1969" Canvas.Top="492" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="178"
+            Height="100"
+            Canvas.Top="316"
+            Canvas.Left="2648"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="151"
+            Height="52"
+            Canvas.Top="598"
+            Canvas.Left="2626"
+            Fill="Green"
+            />
+        <Rectangle Tag="Munt" Height="34" Width="34" Fill="Gold" Canvas.Left="2702" Canvas.Top="541" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="34" Width="35" Fill="Gold" Canvas.Left="2702" Canvas.Top="451" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="69" Width="505" Fill="Purple" Canvas.Left="-510" Canvas.Top="1795" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="69" Width="992" Fill="Purple" Canvas.Left="343" Canvas.Top="1795" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="211" Width="942" Fill="Purple" Canvas.Left="1673" Canvas.Top="1653" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="338"
+            Height="365"
+            Canvas.Top="1499"
+            Canvas.Left="1335"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="303"
+            Height="50"
+            Canvas.Top="1325"
+            Fill="Green" Canvas.Left="20"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="250"
+            Height="50"
+            Canvas.Top="1539"
+            Canvas.Left="924"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="3380"
+            Height="50"
+            Canvas.Top="1100"
+            Fill="Green" Canvas.Left="20"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="1325"
+            Canvas.Left="789"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="1325"
+            Canvas.Left="625"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="1325"
+            Canvas.Left="469"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="250"
+            Height="50"
+            Canvas.Top="1632"
+            Canvas.Left="496"
+            Fill="Green"
+            />
+        <Rectangle Tag="Munt" Height="35" Width="34" Fill="Gold" Canvas.Left="70" Canvas.Top="1248" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="35" Width="34" Fill="Gold" Canvas.Left="70" Canvas.Top="1175" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="35" Width="34" Fill="Gold" Canvas.Left="477" Canvas.Top="1175" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="35" Width="34" Fill="Gold" Canvas.Left="633" Canvas.Top="1175" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="35" Width="34" Fill="Gold" Canvas.Left="797" Canvas.Top="1175" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="250"
+            Height="50"
+            Canvas.Top="1732"
+            Canvas.Left="1085"
+            Fill="Green"
+            />
+        <Rectangle Tag="Munt" Height="35" Width="34" Fill="Gold" Canvas.Left="1140" Canvas.Top="1647" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="50" Width="57" Fill="Purple" Canvas.Left="1278" Canvas.Top="1682" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="10" Width="470" Fill="Purple" Canvas.Left="1340" Canvas.Top="1142" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="64"
+            Height="128"
+            Canvas.Top="1138"
+            Canvas.Left="1278"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="188"
+            Height="50"
+            Canvas.Top="1607"
+            Canvas.Left="1662"
+            Fill="Green" RenderTransformOrigin="0.46,0.356"
+            />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="1362" Canvas.Top="1230" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="1470" Canvas.Top="1230" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="1586" Canvas.Top="1230" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="441" Width="395" Fill="Purple" Canvas.Left="2522" Canvas.Top="1423" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="96"
+            Height="50"
+            Canvas.Top="1499"
+            Canvas.Left="1998"
+            Fill="Green" RenderTransformOrigin="0.46,0.356"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="398"
+            Height="64"
+            Canvas.Top="1368"
+            Canvas.Left="2519"
+            Fill="Green" RenderTransformOrigin="0.46,0.356"
+            />
+        <Rectangle Tag="Obstakel" Height="173" Width="54" Fill="Purple" Canvas.Left="1796" Canvas.Top="1142" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="96"
+            Height="50"
+            Canvas.Top="1432"
+            Canvas.Left="2264"
+            Fill="Green" RenderTransformOrigin="0.46,0.356"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="764"
+            Canvas.Top="1100"
+            Canvas.Left="3350"
+            Fill="Green" RenderTransformOrigin="0.46,0.356"
+            />
+        <Rectangle
+            Tag="Finish"
+            Width="433"
+            Height="34"
+            Canvas.Top="1830"
+            Canvas.Left="2917"
+            Fill="White"
+            />
+        <Rectangle Tag="Obstakel" Height="50" Width="50" Fill="Purple" Canvas.Left="2981" Canvas.Top="1423" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="50" Width="50" Fill="Purple" Canvas.Left="3229" Canvas.Top="1524" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="50" Width="50" Fill="Purple" Canvas.Left="3031" Canvas.Top="1682" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="50" Width="50" Fill="Purple" Canvas.Left="3268" Canvas.Top="1734" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="132"
+            Height="64"
+            Canvas.Top="1359"
+            Canvas.Left="3268"
+            Fill="Green" RenderTransformOrigin="0.46,0.356"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="1375"
+            Canvas.Left="3084"
+            Fill="Green"
+            />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="1700" Canvas.Top="1230" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="2006" Canvas.Top="1248" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="2294" Canvas.Top="1192" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="1300"
+            Canvas.Left="1998"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="1248"
+            Canvas.Left="2286"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="1603"
+            Canvas.Left="2472"
+            Fill="Green"
+            />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="2480" Canvas.Top="1539" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="3300" Canvas.Top="1289" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="3300" Canvas.Top="1202" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="3109" Canvas.Top="1528" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="3154" Canvas.Top="1671" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="258" Canvas.Top="1448" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="1499"
+            Canvas.Left="250"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="50"
+            Height="50"
+            Canvas.Top="1499"
+            Canvas.Left="31"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="End"
+            Width="50"
+            Height="477"
+            Canvas.Top="2223"
+            Canvas.Left="3350"
+            Fill="Black"
+            />
+        <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="39" Canvas.Top="1448" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="17" Width="29" Fill="Purple" Canvas.Left="1546" Canvas.Top="1482" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="17" Width="26" Fill="Purple" Canvas.Left="1424" Canvas.Top="1482" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle
+            Tag="Blok"
+            Width="938"
+            Height="164"
+            Canvas.Top="2700"
+            Canvas.Left="2462"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="800"
+            Height="164"
+            Canvas.Top="2700"
+            Canvas.Left="1317"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="178"
+            Height="50"
+            Canvas.Top="2757"
+            Canvas.Left="1076"
+            Fill="Green"
+            />
+        <Rectangle
+            Tag="Blok"
+            Width="178"
+            Height="50"
+            Canvas.Top="2757"
+            Canvas.Left="2199"
+            Fill="Green"
+            />
 
     </Canvas>
 </Window>
