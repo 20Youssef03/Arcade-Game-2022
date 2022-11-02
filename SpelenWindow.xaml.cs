@@ -270,6 +270,22 @@ namespace ArcadeGame2022
                                 //Herstart level na botsing met obstakel
                             }
                         }
+                        if ((string)y.Tag == "Finish")
+                        {
+                            Rect Finish = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                            if (speler.IntersectsWith(Finish))
+                            {
+                                VolgendLevel();
+                            }
+                        }
+                        if((string)y.Tag == "End")
+                        {
+                            Rect End = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                            if (speler.IntersectsWith(End))
+                            {
+                                WinSpel();
+                            }
+                        }
                     }
                 }
             }
@@ -404,6 +420,11 @@ namespace ArcadeGame2022
             player.Load();
             player.Play();
             //achtergrond muziek wordt afgespeeld na klikken op geluidsknop 
+        }
+
+        private void Stop_Button_Speel_Window_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
