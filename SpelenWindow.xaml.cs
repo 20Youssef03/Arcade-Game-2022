@@ -37,7 +37,7 @@ namespace ArcadeGame2022
         private int punten = 0;
         private string spelerNaam1;
         private string spelerNaam2;
-   
+        private List<Rectangle> itemsToRemove = new List<Rectangle>();
         public SpelenWindow(ImageSource imageSource1, ImageSource imageSource2, string spelerNaam1, string spelerNaam2)
         {
             InitializeComponent();
@@ -151,7 +151,10 @@ namespace ArcadeGame2022
             // Beweeg de speler
             velocity += gravity;
             Canvas.SetTop(Speler, Canvas.GetTop(Speler) + velocity);
-
+            foreach (Rectangle r in itemsToRemove)
+            {
+                SpelenCanvas.Children.Remove(r);
+            }
             // Kijk of de speler een blok raakt
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
             {
@@ -179,11 +182,16 @@ namespace ArcadeGame2022
                                     Canvas.SetTop(Speler, blok.Top + blok.Height + 0.00001); // de 0.00001 voorkomt overlap voor horizontale beweging
                                     velocity = 0;
                                 }
+                             
                             }
                         }
                     }
                 }
+               
             }
+
+            
+
         }
 
         /// <summary>
@@ -237,19 +245,20 @@ namespace ArcadeGame2022
                                     levelPositie -= 4;
                             }
                         }
-                        
-                        
+                       
+
                         if ((string)y.Tag == "Munt")
                         {
                             Rect Munt = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
                             if (speler.IntersectsWith(Munt))
                             {
+
                                 punten += 1;
                                 PuntenTekst.Text = punten.ToString();
-                              
+                                itemsToRemove.Add(y);
                             }
                         }
-                        
+
                     }
                     
                 }
@@ -298,6 +307,7 @@ namespace ArcadeGame2022
             PlaatsVijanden();
             punten = 0;
             PuntenTekst.Text = punten.ToString(); //reset de punten naar 0 
+
         }
 
         /// <summary>
