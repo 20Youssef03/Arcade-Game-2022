@@ -40,7 +40,7 @@
             x:Name="LevelTekst"
             Text="Level 1"
             FontSize="40"
-            Canvas.Top="0"
+            Canvas.Top="3" Foreground="White" FontFamily="Impact" FontWeight="Bold"
             />
         <TextBlock
             x:Name="PuntenTekst"
@@ -144,9 +144,18 @@
             Canvas.Left="0"
             Fill="Green"
             />
+        <Rectangle
+            Tag="Finish"
+            Width="50"
+            Height="813"
+            Canvas.Top="-109"
+            Canvas.Left="3350"
+            Fill="White"
+            />
+
         <Button
             Content="Reset"
-            Click="HerstartSpel"
+            Click="HerstartSpel" Canvas.Left="140" Height="48" Width="76" Canvas.Top="3" Background="{x:Null}" BorderBrush="White" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Impact" FontSize="20" FontWeight="Bold"
             />
         <Button Canvas.Left="1424" Height="93" Width="102" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_click" RenderTransformOrigin="-1.892,4.239">
             <Image
@@ -171,6 +180,7 @@
         <Rectangle Tag="Obstakel" Height="69" Width="71" Fill="Purple" Canvas.Left="889" Canvas.Top="631" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Rectangle Tag="Obstakel" Height="70" Width="59" Fill="Purple" Canvas.Left="1530" Canvas.Top="392" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Rectangle Tag="Obstakel" Height="43" Width="46" Fill="Purple" Canvas.Left="496" Canvas.Top="325" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Button x:Name="Stop_Button_Speel_Window" Content="Stoppen" Canvas.Left="241" Canvas.Top="3" Height="48" Width="102" Background="{x:Null}" BorderBrush="White" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Impact" FontWeight="Bold" FontSize="20" Click="Stop_Button_Speel_Window_Click"/>
 
     </Canvas>
 </Window>
