@@ -151,10 +151,12 @@ namespace ArcadeGame2022
             // Beweeg de speler
             velocity += gravity;
             Canvas.SetTop(Speler, Canvas.GetTop(Speler) + velocity);
+            //foreach die rectangles van canvas removed 
             foreach (Rectangle r in itemsToRemove)
             {
                 SpelenCanvas.Children.Remove(r);
             }
+
             // Kijk of de speler een blok raakt
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
             {
@@ -245,22 +247,30 @@ namespace ArcadeGame2022
                                     levelPositie -= 4;
                             }
                         }
-                       
 
+                        //als speler munt raakt
                         if ((string)y.Tag == "Munt")
                         {
                             Rect Munt = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
                             if (speler.IntersectsWith(Munt))
                             {
-
+                                //komt er een punt bij 
                                 punten += 1;
                                 PuntenTekst.Text = punten.ToString();
+                                //verdwijnt de munt 
                                 itemsToRemove.Add(y);
                             }
                         }
-
+                        if ((string)y.Tag == "Obstakel")
+                        {
+                            Rect Obstakel = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                            if (speler.IntersectsWith(Obstakel))
+                            {
+                                HerstartLevel();
+                                //Herstart level na botsing met obstakel
+                            }
+                        }
                     }
-                    
                 }
             }
         }
