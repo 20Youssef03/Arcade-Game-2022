@@ -15,6 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Collections;
+using System.Media;
+using System.DirectoryServices;
+using System.Windows.Markup;
 
 namespace ArcadeGame2022
 {
@@ -34,7 +37,7 @@ namespace ArcadeGame2022
         private int punten = 0;
         private string spelerNaam1;
         private string spelerNaam2;
-
+        private List<Rectangle> itemsToRemove = new List<Rectangle>();
         public SpelenWindow(ImageSource imageSource1, ImageSource imageSource2, string spelerNaam1, string spelerNaam2)
         {
             InitializeComponent();
@@ -56,7 +59,7 @@ namespace ArcadeGame2022
                 {
                     x.Fill = new ImageBrush // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
                     {
-                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/brick.png")), // /bin/Debug/netcoreapp3.1/Images/brick.png
+                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/gras blok platform.jpg")), // /bin/Debug/netcoreapp3.1/Images/gras blok platform.png
                         TileMode = TileMode.Tile,
                         ViewportUnits = BrushMappingMode.Absolute,
                         Viewport = new Rect(0, 0, 50, 50)
@@ -148,6 +151,11 @@ namespace ArcadeGame2022
             // Beweeg de speler
             velocity += gravity;
             Canvas.SetTop(Speler, Canvas.GetTop(Speler) + velocity);
+            //foreach die rectangles van canvas removed 
+            foreach (Rectangle r in itemsToRemove)
+            {
+                SpelenCanvas.Children.Remove(r);
+            }
 
             // Kijk of de speler een blok raakt
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
@@ -176,11 +184,16 @@ namespace ArcadeGame2022
                                     Canvas.SetTop(Speler, blok.Top + blok.Height + 0.00001); // de 0.00001 voorkomt overlap voor horizontale beweging
                                     velocity = 0;
                                 }
+                             
                             }
                         }
                     }
                 }
+               
             }
+
+            
+
         }
 
         /// <summary>
@@ -234,10 +247,51 @@ namespace ArcadeGame2022
                                     levelPositie -= 4;
                             }
                         }
+
+                        //als speler munt raakt
+                        if ((string)y.Tag == "Munt")
+                        {
+                            Rect Munt = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                            if (speler.IntersectsWith(Munt))
+                            {
+                                //komt er een punt bij 
+                                punten += 1;
+                                PuntenTekst.Text = punten.ToString();
+                                //verdwijnt de munt 
+                                itemsToRemove.Add(y);
+                            }
+                        }
+                        if ((string)y.Tag == "Obstakel")
+                        {
+                            Rect Obstakel = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                            if (speler.IntersectsWith(Obstakel))
+                            {
+                                HerstartLevel();
+                                //Herstart level na botsing met obstakel
+                            }
+                        }
+                        if ((string)y.Tag == "Finish")
+                        {
+                            Rect Finish = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                            if (speler.IntersectsWith(Finish))
+                            {
+                                VolgendLevel();
+                            }
+                        }
+                        if((string)y.Tag == "End")
+                        {
+                            Rect End = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+                            if (speler.IntersectsWith(End))
+                            {
+                                WinSpel();
+                            }
+                        }
                     }
                 }
             }
         }
+
+     
 
         /// <summary>
         /// Plaatst de speler op de grond en alle blokken terug naar de horizontale startpositie en 1000 pixels hoger, waardoor het volgende level in beeld komt.
@@ -277,6 +331,9 @@ namespace ArcadeGame2022
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
             PlaatsVijanden();
+            punten = 0;
+            PuntenTekst.Text = punten.ToString(); //reset de punten naar 0 
+
         }
 
         /// <summary>
@@ -299,6 +356,8 @@ namespace ArcadeGame2022
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
             PlaatsVijanden();
+            punten = 0;
+            PuntenTekst.Text = punten.ToString(); //reset de punten naar 0
         }
 
         private void PlaatsVijanden()
@@ -353,6 +412,19 @@ namespace ArcadeGame2022
             {
                 connection.Close();
             }
+        }
+
+        private void Button_click(object sender, RoutedEventArgs e)
+        {
+            SoundPlayer player = new SoundPlayer(@"C:\Users\Lavar\source\repos\New folder (10)\Singing nightingale. The best bird song..wav");
+            player.Load();
+            player.Play();
+            //achtergrond muziek wordt afgespeeld na klikken op geluidsknop 
+        }
+
+        private void Stop_Button_Speel_Window_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

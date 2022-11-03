@@ -8,7 +8,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="achtergrond.png" />
+    <None Remove="Sounds\Singing nightingale. The best bird song..wav" />
+    <None Remove="video-game-doodle-wasd-keyboard-keys-used-pc-games-gaming-concept-235629200.jpg" />
+    <None Remove="wasd-keys-png-wasd-keys-11562858827u3bz8nzi7e.png" />
+    <None Remove="—Pngtree—high sound vector icon_3791377.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Singing nightingale. The best bird song..wav" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="achtergrond.png" />
+    <Resource Include="video-game-doodle-wasd-keyboard-keys-used-pc-games-gaming-concept-235629200.jpg" />
+    <Resource Include="wasd-keys-png-wasd-keys-11562858827u3bz8nzi7e.png" />
+    <Resource Include="—Pngtree—high sound vector icon_3791377.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Sounds\" />
   </ItemGroup>
 
 </Project>
