@@ -37,11 +37,11 @@ namespace ArcadeGame2022
         private double levelSpeler1 = 0;
         private double levelSpeler2 = 0;
         private int punten = 0;
-        private int puntenSpeler1 = 0;
         private int puntenSpeler2 = 0;
-        private int levens = 3;
-        private int levensSpeler1 = 3;
-        private int levensSpeler2 = 3;
+        private int puntenSpeler1 = 0;
+        private int levens = 4;
+        private int levensSpeler1 = 4;
+        private int levensSpeler2 = 4;
         private int huidigeSpeler = 1;
         private int aantalSpelers;
         private string spelerNaam1;
@@ -49,6 +49,7 @@ namespace ArcadeGame2022
         private ImageSource imageSource1;
         private ImageSource imageSource2;
         private List<Rectangle> itemsToRemove = new List<Rectangle>();
+        private string currentDirectory = Directory.GetCurrentDirectory();
         public SpelenWindow(ImageSource imageSource1, ImageSource imageSource2, string spelerNaam1, string spelerNaam2)
         {
             InitializeComponent();
@@ -83,7 +84,7 @@ namespace ArcadeGame2022
                 {
                     x.Fill = new ImageBrush // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
                     {
-                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/gras blok platform.jpg")), // /bin/Debug/netcoreapp3.1/Images/gras blok platform.png
+                        ImageSource = new BitmapImage(new Uri(currentDirectory + "/../../../Images/gras blok platform.jpg")), // /bin/Debug/netcoreapp3.1/Images/gras blok platform.png
                         TileMode = TileMode.Tile,
                         ViewportUnits = BrushMappingMode.Absolute,
                         Viewport = new Rect(0, 0, 50, 50)
@@ -101,12 +102,14 @@ namespace ArcadeGame2022
 
         private void GameEngine(object sender, EventArgs e)
         {
+            LevelTekst.Text = huidigeSpeler.ToString();
             VerticaleBeweging();
 
             // Horizontale beweging wordt apart bepaald om te voorkomen dat de speler de verkeerde kant op wordt verplaatst
             HorizontaleBeweging();
 
             BeweegVijanden();
+
         }
 
         /// <summary>
@@ -354,47 +357,11 @@ namespace ArcadeGame2022
         {
             if (huidigeSpeler == 1)
             {
-                puntenSpeler1 = punten;
-                SpelerTekst.Text = "Speler: " + spelerNaam1;
-                if (aantalSpelers == 2)
-                {
-                    punten = puntenSpeler2;
-                    foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
-                    {
-                        if (x.Name == "Speler")
-                        {
-                            x.Fill = new ImageBrush
-                            {
-                                ImageSource = imageSource1
-                            };
-                        }
-                    }
-                    huidigeSpeler = 2;
-                    HerstartSpel(null, null);
-                    level = levelSpeler2;
-                }
+                WisselSpeler2();
             }
             else
             {
-                puntenSpeler2 = punten;
-                SpelerTekst.Text = "Speler: " + spelerNaam2;
-                if (aantalSpelers == 2)
-                {
-                    punten = puntenSpeler1;
-                    foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
-                    {
-                        if (x.Name == "Speler")
-                        {
-                            x.Fill = new ImageBrush
-                            {
-                                ImageSource = imageSource2
-                            };
-                        }
-                    }
-                    huidigeSpeler = 1;
-                    HerstartSpel(null, null);
-                    level = levelSpeler1;
-                }
+                WisselSpeler1();
             }
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
             {
@@ -469,27 +436,38 @@ namespace ArcadeGame2022
 
         private void WinSpel()
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\")) + "Data\\Database1.mdf\";Integrated Security=True";
+            /*string test = "hoi";
+            string curdir = currentDirectory;
+            string combi = System.IO.Path.Combine(curdir, "..\\..\\..\\");
+            string fullpa = System.IO.Path.GetFullPath(combi);*/
+            //string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + fullpa + "Data\\Database1.mdf\";Integrated Security=True";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\stefa\\Desktop\\Arcade-Game-2022\\Data\\Database1.mdf;Integrated Security=True";
             string naam;
-            if (huidigeSpeler == 1)
+            int score;
+            if (huidigeSpeler == 2)
             {
                 naam = spelerNaam1;
                 levens = levensSpeler1;
                 HerstartLevel();
+                score = puntenSpeler1;
             }
             else
             {
                 naam = spelerNaam2;
                 levens = levensSpeler2;
                 HerstartLevel();
+                score = puntenSpeler2;
             }
             aantalSpelers--;
             string gewonnen;
             if (levens > 0)
                 gewonnen = "Ja";
             else
+            {
                 gewonnen = "Nee";
-            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", naam, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"), gewonnen);
+                HerstartLevel();
+            }
+            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", naam, score, DateTime.Today.Date.ToString("yyyy-MM-dd"), gewonnen);
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
             try
@@ -505,10 +483,65 @@ namespace ArcadeGame2022
             {
                 connection.Close();
             }
-            if (aantalSpelers == 1)
-                HerstartLevel();
-            else
+            if (aantalSpelers == 0)
                 Application.Current.Shutdown();
+        }
+
+        private void WisselSpeler1()
+        {
+            levensSpeler2--;
+            LevensTekst.Text = "Levens: " + levensSpeler2;
+            puntenSpeler1 = punten;
+            if (levensSpeler2 == 0)
+            {
+                WinSpel();
+            }
+            if (aantalSpelers == 2)
+            {
+                SpelerTekst.Text = "Speler: " + spelerNaam2;
+                punten = puntenSpeler2;
+                foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
+                {
+                    if (x.Name == "Speler")
+                    {
+                        x.Fill = new ImageBrush
+                        {
+                            ImageSource = imageSource2
+                        };
+                    }
+                }
+                huidigeSpeler = 1;
+                HerstartSpel(null, null);
+                level = levelSpeler1;
+            }
+        }
+        private void WisselSpeler2()
+        {
+            levensSpeler1--;
+            LevensTekst.Text = "Levens: " + levensSpeler1;
+            puntenSpeler2 = punten;
+            if (levensSpeler1 == 0)
+            {
+                WinSpel();
+            }
+            if (aantalSpelers == 2)
+            {
+                SpelerTekst.Text = "Speler: " + spelerNaam1;
+                punten = puntenSpeler1;
+                foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
+                {
+                    if (x.Name == "Speler")
+                    {
+                        x.Fill = new ImageBrush
+                        {
+                            ImageSource = imageSource1
+                        };
+                    }
+                }
+                huidigeSpeler = 2;
+                HerstartSpel(null, null);
+                level = levelSpeler2;
+            }
         }
 
         private void Button_click(object sender, RoutedEventArgs e)
