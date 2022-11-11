@@ -34,16 +34,28 @@ namespace ArcadeGame2022
         private float gravity = 0.15f;
         private double levelPositie = 0;
         private double level = 0;
+        private double levelSpeler1 = 0;
+        private double levelSpeler2 = 0;
         private int punten = 0;
+        private int puntenSpeler1 = 0;
+        private int puntenSpeler2 = 0;
+        private int huidigeSpeler = 1;
         private string spelerNaam1;
         private string spelerNaam2;
+        private ImageSource imageSource1;
+        private ImageSource imageSource2;
         private List<Rectangle> itemsToRemove = new List<Rectangle>();
         public SpelenWindow(ImageSource imageSource1, ImageSource imageSource2, string spelerNaam1, string spelerNaam2)
         {
             InitializeComponent();
 
+
             this.spelerNaam1 = spelerNaam1;
             this.spelerNaam2 = spelerNaam2;
+            this.imageSource1 = imageSource1;
+            this.imageSource2 = imageSource2;
+
+            SpelerTekst.Text = "Speler: " + spelerNaam1;
 
             // Vervangt enkele kleur rechthoeken met afbeeldingen
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
@@ -72,6 +84,7 @@ namespace ArcadeGame2022
             gameTimer.Interval = TimeSpan.FromMilliseconds(10);
             gameTimer.Tick += GameEngine;
             gameTimer.Start();
+            HerstartLevel(); // Geen idee waarom dit nodig is maar als het er niet staat doet multiplayer vreemd
         }
 
         private void GameEngine(object sender, EventArgs e)
@@ -109,7 +122,7 @@ namespace ArcadeGame2022
             if (e.Key == Key.D6)
             {
                 punten += 1;
-                PuntenTekst.Text = punten.ToString();
+                PuntenTekst.Text = "Punten: " + punten.ToString();
             }
             if (e.Key == Key.D7)
                 WinSpel();
@@ -256,7 +269,7 @@ namespace ArcadeGame2022
                             {
                                 //komt er een punt bij 
                                 punten += 1;
-                                PuntenTekst.Text = punten.ToString();
+                                PuntenTekst.Text = "Punten: " + punten.ToString();
                                 //verdwijnt de munt 
                                 itemsToRemove.Add(y);
                             }
@@ -308,6 +321,14 @@ namespace ArcadeGame2022
                 else
                     Canvas.SetTop(x, 631); // Plaats speler op grond
             }
+            if (huidigeSpeler == 1)
+            {
+                levelSpeler1 += 1;
+            }
+            else
+            {
+                levelSpeler2 += 1;
+            }
             level += 1;
             LevelTekst.Text = "Level " + (level + 1);
             levelPositie = 0; // Zet positie teller terug op 0
@@ -319,10 +340,49 @@ namespace ArcadeGame2022
         /// </summary>
         private void HerstartLevel()
         {
+            if (huidigeSpeler == 1)
+            {
+                puntenSpeler1 = punten;
+                punten = puntenSpeler2;
+                SpelerTekst.Text = "Speler: " + spelerNaam1;
+                foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
+                {
+                    if (x.Name == "Speler")
+                    {
+                        x.Fill = new ImageBrush
+                        {
+                            ImageSource = imageSource1
+                        };
+                    }
+                }
+                huidigeSpeler = 2;
+                HerstartSpel(null, null);
+                level = levelSpeler2;
+            }
+            else
+            {
+                puntenSpeler2 = punten;
+                punten = puntenSpeler1;
+                SpelerTekst.Text = "Speler: " + spelerNaam2;
+                foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
+                {
+                    if (x.Name == "Speler")
+                    {
+                        x.Fill = new ImageBrush
+                        {
+                            ImageSource = imageSource2
+                        };
+                    }
+                }
+                huidigeSpeler = 1;
+                HerstartSpel(null, null);
+                level = levelSpeler1;
+            }
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
             {
                 if (x.Name != "Speler")
                 {
+                    Canvas.SetTop(x, Canvas.GetTop(x) - 1000 * level); // Beweeg alle blokken 1000 pixels omhoog zodat het volgende level de plaats van de vorige inneemt
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - levelPositie); // Beweeg alle blokken terug naar de horizontale startpositie
                 }
                 else
@@ -330,10 +390,8 @@ namespace ArcadeGame2022
             }
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
+            PuntenTekst.Text = "Punten: " + punten.ToString();
             PlaatsVijanden();
-            punten = 0;
-            PuntenTekst.Text = punten.ToString(); //reset de punten naar 0 
-
         }
 
         /// <summary>
@@ -352,12 +410,20 @@ namespace ArcadeGame2022
                     Canvas.SetTop(x, 631); // Plaats speler op grond
             }
             level = 0;
+            if (huidigeSpeler == 1 && e != null)
+            {
+                levelSpeler1 = 0;
+            }
+            else if (e != null)
+            {
+                levelSpeler2 = 0;
+            }
             LevelTekst.Text = "Level 1";
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
             PlaatsVijanden();
             punten = 0;
-            PuntenTekst.Text = punten.ToString(); //reset de punten naar 0
+            PuntenTekst.Text = "Punten: " + punten.ToString(); //reset de punten naar 0
         }
 
         private void PlaatsVijanden()
@@ -384,28 +450,18 @@ namespace ArcadeGame2022
         private void WinSpel()
         {
             string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\")) + "Data\\Database1.mdf\";Integrated Security=True";
-            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", spelerNaam1, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
-            string query2 = "";
+            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", spelerNaam1, puntenSpeler1, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
             if (spelerNaam2 != null)
-                query2 = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", spelerNaam2, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
+                query += String.Format(", ('{0}', '{1}', '{2}', '{3}')", spelerNaam2, puntenSpeler2, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
-            SqlCommand command2 = new SqlCommand();
             try
             {
                 command.CommandText = query;
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
-                if (query2 != "")
-                {
-                    command2.CommandText = query2;
-                    command2.CommandType = CommandType.Text;
-                    command2.Connection = connection;
-                }
                 connection.Open();
                 command.ExecuteNonQuery();
-                if (query2 != "")
-                    command2.ExecuteNonQuery();
                 connection.Close();
             }
             catch (IOException)
