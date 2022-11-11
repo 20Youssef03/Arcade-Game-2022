@@ -765,6 +765,13 @@
             Canvas.Top="90" Foreground="White" FontFamily="Impact"
             HorizontalAlignment="Center" VerticalAlignment="Top"
             />
+        <TextBlock
+            x:Name="LevensTekst"
+            Text="Levens: "
+            FontSize="36"
+            Canvas.Top="134" Foreground="White" FontFamily="Impact"
+            HorizontalAlignment="Center" VerticalAlignment="Top"
+            />
 
     </Canvas>
 </Window>
