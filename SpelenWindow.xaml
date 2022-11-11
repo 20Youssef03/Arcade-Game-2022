@@ -42,7 +42,7 @@
             />
         <TextBlock
             x:Name="PuntenTekst"
-            Text="0"
+            Text="Punten: 0"
             FontSize="36"
             Canvas.Top="50" Foreground="White" FontFamily="Impact"
             />
@@ -757,6 +757,13 @@
             Canvas.Top="1496"
             Canvas.Left="249"
             Fill="Green"
+            />
+        <TextBlock
+            x:Name="SpelerTekst"
+            Text="Speler: "
+            FontSize="36"
+            Canvas.Top="90" Foreground="White" FontFamily="Impact"
+            HorizontalAlignment="Center" VerticalAlignment="Top"
             />
 
     </Canvas>
