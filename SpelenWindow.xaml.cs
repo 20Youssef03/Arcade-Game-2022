@@ -15,9 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Collections;
-using System.Media;
-using System.DirectoryServices;
-using System.Windows.Markup;
 
 namespace ArcadeGame2022
 {
@@ -42,9 +39,24 @@ namespace ArcadeGame2022
         private int huidigeSpeler = 1;
         private string spelerNaam1;
         private string spelerNaam2;
+<<<<<<< HEAD
         private ImageSource imageSource1;
         private ImageSource imageSource2;
+=======
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> cf1edaa710678461b985193cddc7294fdb2e4c61
         private List<Rectangle> itemsToRemove = new List<Rectangle>();
+
+        /// <summary>
+        /// Functie om het SpelenWindow te openen en het spel te starten
+        /// </summary>
+        /// <param name="imageSource1">Het gekozen poppetje van speler 1</param>
+        /// <param name="imageSource2">Het gekozen poppetje van speler 2</param>
+        /// <param name="spelerNaam1">De ingevoerde naam van speler 1</param>
+        /// <param name="spelerNaam2">De ingevoerde naam van speler 2</param>
+>>>>>>> Stashed changes
         public SpelenWindow(ImageSource imageSource1, ImageSource imageSource2, string spelerNaam1, string spelerNaam2)
         {
             InitializeComponent();
@@ -70,11 +82,38 @@ namespace ArcadeGame2022
                 {
                     x.Fill = new ImageBrush // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
                     {
-                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/gras blok platform.jpg")), // /bin/Debug/netcoreapp3.1/Images/gras blok platform.png
+<<<<<<< Updated upstream
+                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/brick.png")), // /bin/Debug/netcoreapp3.1/Images/brick.png
+=======
+                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/gras blok platform.jpg")), // /Images/gras blok platform.jpg
+>>>>>>> Stashed changes
                         TileMode = TileMode.Tile,
                         ViewportUnits = BrushMappingMode.Absolute,
                         Viewport = new Rect(0, 0, 50, 50)
                     };
+                }
+                else if ((string)x.Tag == "Munt")
+                {
+                    x.Fill = new ImageBrush // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
+                    {
+                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/munt.png")), // /Images/munt.png
+                        Stretch = Stretch.Uniform,
+                        ViewportUnits = BrushMappingMode.Absolute,
+                        Viewport = new Rect(0, 0, 35, 35)
+                    };
+                }
+                else if ((string)x.Tag == "Obstakel")
+                {
+                    if (x.Fill == Brushes.Black)
+                    {
+                        x.Fill = new ImageBrush // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
+                        {
+                            ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/olie.png")), // /Images/olie.png
+                            TileMode = TileMode.Tile,
+                            ViewportUnits = BrushMappingMode.Absolute,
+                            Viewport = new Rect(0, 0, 50, 50)
+                        };
+                    }
                 }
             }
 
@@ -85,6 +124,11 @@ namespace ArcadeGame2022
             gameTimer.Start();
         }
 
+        /// <summary>
+        /// Functie die elke 10 milliseconden na gaat wat berekend moet worden
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GameEngine(object sender, EventArgs e)
         {
             VerticaleBeweging();
@@ -162,11 +206,6 @@ namespace ArcadeGame2022
             // Beweeg de speler
             velocity += gravity;
             Canvas.SetTop(Speler, Canvas.GetTop(Speler) + velocity);
-            //foreach die rectangles van canvas removed 
-            foreach (Rectangle r in itemsToRemove)
-            {
-                SpelenCanvas.Children.Remove(r);
-            }
 
             // Kijk of de speler een blok raakt
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
@@ -195,16 +234,11 @@ namespace ArcadeGame2022
                                     Canvas.SetTop(Speler, blok.Top + blok.Height + 0.00001); // de 0.00001 voorkomt overlap voor horizontale beweging
                                     velocity = 0;
                                 }
-                             
                             }
                         }
                     }
                 }
-               
             }
-
-            
-
         }
 
         /// <summary>
@@ -258,6 +292,7 @@ namespace ArcadeGame2022
                                     levelPositie -= 4;
                             }
                         }
+<<<<<<< HEAD
 
                         //als speler munt raakt
                         if ((string)y.Tag == "Munt")
@@ -297,12 +332,12 @@ namespace ArcadeGame2022
                                 WinSpel();
                             }
                         }
+=======
+>>>>>>> cf1edaa710678461b985193cddc7294fdb2e4c61
                     }
                 }
             }
         }
-
-     
 
         /// <summary>
         /// Plaatst de speler op de grond en alle blokken terug naar de horizontale startpositie en 1000 pixels hoger, waardoor het volgende level in beeld komt.
@@ -420,8 +455,11 @@ namespace ArcadeGame2022
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
             PlaatsVijanden();
+<<<<<<< HEAD
             punten = 0;
             PuntenTekst.Text = "Punten: " + punten.ToString(); //reset de punten naar 0
+=======
+>>>>>>> cf1edaa710678461b985193cddc7294fdb2e4c61
         }
 
         private void PlaatsVijanden()
@@ -445,12 +483,21 @@ namespace ArcadeGame2022
             // Net als HorizontaleBeweging() maar specifiek voor de vijanden
         }
 
+        /// <summary>
+        /// Functie die wordt uitgevoerd als de speler het spel wint
+        /// </summary>
         private void WinSpel()
         {
             string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\")) + "Data\\Database1.mdf\";Integrated Security=True";
+<<<<<<< HEAD
             string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", spelerNaam1, puntenSpeler1, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
             if (spelerNaam2 != null)
                 query += String.Format(", ('{0}', '{1}', '{2}', '{3}')", spelerNaam2, puntenSpeler2, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
+=======
+            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", spelerNaam1, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
+            if (spelerNaam2 != null)
+                query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}'), ('{4}', '{5}', '{6}', '{7}')", spelerNaam1, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja", spelerNaam2, punten, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
+>>>>>>> cf1edaa710678461b985193cddc7294fdb2e4c61
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
             try
@@ -466,19 +513,24 @@ namespace ArcadeGame2022
             {
                 connection.Close();
             }
-        }
 
-        private void Button_click(object sender, RoutedEventArgs e)
+            Application.Current.Shutdown();
+        }
+<<<<<<< Updated upstream
+=======
+
+        private void Button_click(object sender, RoutedEventArgs e) // Achtergrond muziek wordt afgespeeld na klikken op geluidsknop
         {
-            SoundPlayer player = new SoundPlayer(@"C:\Users\Lavar\source\repos\New folder (10)\Singing nightingale. The best bird song..wav");
+            SoundPlayer player = new SoundPlayer(Directory.GetCurrentDirectory() + "/../../../Singing nightingale. The best bird song..wav");
             player.Load();
             player.Play();
-            //achtergrond muziek wordt afgespeeld na klikken op geluidsknop 
+             
         }
 
         private void Stop_Button_Speel_Window_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
+>>>>>>> Stashed changes
     }
 }

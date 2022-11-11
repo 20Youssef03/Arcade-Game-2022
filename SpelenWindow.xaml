@@ -16,35 +16,57 @@
         Closed="OnClose"
         KeyUp="OnKeyUp">
     <Canvas x:Name="SpelenCanvas">
-        <Image
-                Width="1611"
-                Height="868"
-                Source="\achtergrond.png" HorizontalAlignment="Left" Canvas.Left="-7" VerticalAlignment="Top" Canvas.Top="-109" />
+<<<<<<< Updated upstream
+        <Rectangle
+            x:Name="Level1Achtergrond"
+            Width="1536"
+            Height="864"
+            Canvas.Top="0"
+            HorizontalAlignment="Center"
+            Fill="LightBlue"
+            />
         <Rectangle
             x:Name="Level2Achtergrond"
-            Width="3400"
+            Width="1536"
             Height="864"
             Canvas.Top="1000"
+            HorizontalAlignment="Center"
             Fill="LightGreen"
             />
         <Rectangle
             x:Name="Level3Achtergrond"
-            Width="3400"
+            Width="1536"
             Height="864"
-            Canvas.Top="1995"
-            Fill="Pink" Canvas.Left="-7"
+            Canvas.Top="2000"
+            HorizontalAlignment="Center"
+            Fill="Pink"
             />
+=======
+        <Image
+                Width="1611"
+                Height="868"
+                Source="\achtergrond.png" HorizontalAlignment="Left" Canvas.Left="-7" VerticalAlignment="Top" Canvas.Top="-109" />
+>>>>>>> Stashed changes
         <TextBlock
             x:Name="LevelTekst"
             Text="Level 1"
             FontSize="40"
-            Canvas.Top="3" Foreground="White" FontFamily="Impact" FontWeight="Bold"
+            Canvas.Top="0"
             />
         <TextBlock
             x:Name="PuntenTekst"
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+            Text="0"
+            FontSize="40"
+            Canvas.Top="50"
+=======
+>>>>>>> cf1edaa710678461b985193cddc7294fdb2e4c61
             Text="Punten: 0"
             FontSize="36"
             Canvas.Top="50" Foreground="White" FontFamily="Impact"
+>>>>>>> Stashed changes
             />
         <Rectangle
             x:Name="Speler"
@@ -105,9 +127,9 @@
         <Rectangle
             Tag="Blok"
             Width="250"
-            Height="464"
-            Canvas.Top="86"
-            Canvas.Left="1969"
+            Height="50"
+            Canvas.Top="500"
+            Canvas.Left="2000"
             Fill="Green"
             />
         <Rectangle
@@ -128,7 +150,7 @@
             />
         <Rectangle
             Tag="Blok"
-            Width="343"
+            Width="850"
             Height="164"
             Canvas.Top="1700"
             Canvas.Left="0"
@@ -136,25 +158,18 @@
             />
         <Rectangle
             Tag="Blok"
-            Width="746"
+            Width="1250"
             Height="164"
             Canvas.Top="2700"
             Canvas.Left="0"
             Fill="Green"
             />
-        <Rectangle
-            Tag="Finish"
-            Width="50"
-            Height="507"
-            Canvas.Top="93"
-            Canvas.Left="3350"
-            Fill="White"
-            />
-
         <Button
             Content="Reset"
-            Click="HerstartSpel" Canvas.Left="140" Height="48" Width="76" Canvas.Top="3" Background="{x:Null}" BorderBrush="White" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Impact" FontSize="20" FontWeight="Bold"
+            Click="HerstartSpel"
             />
+<<<<<<< Updated upstream
+=======
         <Button Canvas.Left="1424" Height="93" Width="102" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_click" RenderTransformOrigin="-1.892,4.239">
             <Image
                 Width="117"
@@ -170,11 +185,11 @@
         <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="508" Canvas.Top="216" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Rectangle Tag="Munt" Height="35" Width="34" Fill="Gold" Canvas.Left="608" Canvas.Top="290" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Center" />
 
-        <Rectangle Tag="Obstakel" Height="69" Width="505" Fill="Purple" Canvas.Left="-494" Canvas.Top="869" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Rectangle Tag="Obstakel" Height="69" Width="505" Fill="Black" Canvas.Left="-510" Canvas.Top="819" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <TextBlock Tag="Dood" FontSize="80" FontWeight="Bold" FontStyle="Italic" Canvas.Left="70" Canvas.Top="300" Height="185" Width="1460" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden">
   Je bent dood, begin het level opnieuw
         </TextBlock>
-        <Rectangle Tag="Obstakel" Height="69" Width="224" Fill="Purple" Canvas.Left="1586" Canvas.Top="873" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="112" Width="200" Fill="Black" Canvas.Left="1600" Canvas.Top="757" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Center" VerticalAlignment="Top" />
         <Rectangle Tag="Obstakel" Height="69" Width="71" Fill="Purple" Canvas.Left="889" Canvas.Top="631" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Rectangle Tag="Obstakel" Height="70" Width="59" Fill="Purple" Canvas.Left="1530" Canvas.Top="392" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Rectangle Tag="Obstakel" Height="43" Width="46" Fill="Purple" Canvas.Left="496" Canvas.Top="325" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Top" />
@@ -289,9 +304,9 @@
             />
         <Rectangle Tag="Munt" Height="34" Width="34" Fill="Gold" Canvas.Left="2702" Canvas.Top="541" RenderTransformOrigin="18.651,14.24" />
         <Rectangle Tag="Munt" Height="34" Width="35" Fill="Gold" Canvas.Left="2702" Canvas.Top="451" RenderTransformOrigin="18.651,14.24" />
-        <Rectangle Tag="Obstakel" Height="69" Width="505" Fill="Purple" Canvas.Left="-510" Canvas.Top="1795" RenderTransformOrigin="18.651,14.24" />
-        <Rectangle Tag="Obstakel" Height="69" Width="992" Fill="Purple" Canvas.Left="343" Canvas.Top="1795" RenderTransformOrigin="18.651,14.24" />
-        <Rectangle Tag="Obstakel" Height="211" Width="942" Fill="Purple" Canvas.Left="1673" Canvas.Top="1653" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="69" Width="505" Fill="Black" Canvas.Left="-505" Canvas.Top="1795" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Rectangle Tag="Obstakel" Height="69" Width="992" Fill="Black" Canvas.Left="343" Canvas.Top="1795" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="211" Width="942" Fill="Black" Canvas.Left="1673" Canvas.Top="1653" RenderTransformOrigin="18.651,14.24" />
         <Rectangle
             Tag="Blok"
             Width="338"
@@ -302,10 +317,11 @@
             />
         <Rectangle
             Tag="Blok"
-            Width="303"
+            Width="323"
             Height="50"
             Canvas.Top="1325"
-            Fill="Green" Canvas.Left="20"
+            Canvas.Left="0"
+            Fill="Green"
             />
         <Rectangle
             Tag="Blok"
@@ -317,10 +333,11 @@
             />
         <Rectangle
             Tag="Blok"
-            Width="3380"
+            Width="3400"
             Height="50"
             Canvas.Top="1100"
-            Fill="Green" Canvas.Left="20"
+            Canvas.Left="0"
+            Fill="Green"
             />
         <Rectangle
             Tag="Blok"
@@ -502,11 +519,11 @@
             />
         <Rectangle
             Tag="End"
-            Width="460"
+            Width="465"
             Height="50"
             Canvas.Top="2109"
-            Canvas.Left="2940"
-            Fill="Black"
+            Canvas.Left="2935"
+            Fill="Black" HorizontalAlignment="Left" VerticalAlignment="Center"
             />
         <Rectangle Tag="Munt" Height="36" Width="34" Fill="Gold" Canvas.Left="39" Canvas.Top="1448" RenderTransformOrigin="18.651,14.24" />
         <Rectangle Tag="Obstakel" Height="17" Width="29" Fill="Purple" Canvas.Left="1546" Canvas.Top="1482" RenderTransformOrigin="18.651,14.24" />
@@ -601,7 +618,7 @@
             Canvas.Left="1437"
             Fill="Green"
             />
-        <Rectangle Tag="Obstakel" Height="43" Width="935" Fill="Purple" Canvas.Left="738" Canvas.Top="2864" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="69" Width="935" Fill="Black" Canvas.Left="738" Canvas.Top="2833" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Center" VerticalAlignment="Top" />
         <Rectangle
             Tag="Blok"
             Width="263"
@@ -673,7 +690,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Tag="Obstakel" Height="43" Width="915" Fill="Purple" Canvas.Left="1969" Canvas.Top="2864" RenderTransformOrigin="18.651,14.24" />
+        <Rectangle Tag="Obstakel" Height="69" Width="915" Fill="Black" Canvas.Left="1969" Canvas.Top="2833" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Center" VerticalAlignment="Top" />
         <Rectangle
             Tag="Blok"
             Width="118"
@@ -698,16 +715,7 @@
             Canvas.Left="2817"
             Fill="Green"
             />
-        <Rectangle Tag="Obstakel" Height="762" Width="100" Fill="Purple" Canvas.Left="3405" Canvas.Top="-18831" RenderTransformOrigin="18.651,14.24">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
+        <Rectangle Tag="Obstakel" Height="762" Width="100" Fill="Purple" Canvas.Left="3400" Canvas.Top="2000"/>
         <Rectangle
             Tag="Blok"
             Width="50"
@@ -758,6 +766,7 @@
             Canvas.Left="249"
             Fill="Green"
             />
+<<<<<<< HEAD
         <TextBlock
             x:Name="SpelerTekst"
             Text="Speler: "
@@ -765,6 +774,10 @@
             Canvas.Top="90" Foreground="White" FontFamily="Impact"
             HorizontalAlignment="Center" VerticalAlignment="Top"
             />
+=======
+        <Rectangle Tag="Obstakel" Height="69" Width="505" Fill="Black" Canvas.Left="-505" Canvas.Top="2795" RenderTransformOrigin="18.651,14.24" HorizontalAlignment="Center" VerticalAlignment="Center" />
+>>>>>>> cf1edaa710678461b985193cddc7294fdb2e4c61
 
+>>>>>>> Stashed changes
     </Canvas>
 </Window>

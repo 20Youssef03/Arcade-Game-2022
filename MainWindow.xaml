@@ -13,9 +13,6 @@
         Left="0"
         Top="0">
     <Grid x:Name="MainGrid">
-        <Grid.Background>
-            <ImageBrush ImageSource="/achtergrond.png"/>
-        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -40,7 +37,7 @@
             Grid.Row="0"
             Grid.ColumnSpan="3"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center" Foreground="White" FontFamily="Impact" FontWeight="Bold"
+            VerticalAlignment="Center"
             />
         <Button
             Panel.ZIndex="1"
@@ -50,7 +47,7 @@
             Grid.Column="1"
             Grid.Row="1"
             Grid.ColumnSpan="3"
-            Click="SpelenButtonClick" Background="{x:Null}" FontFamily="Impact" FontWeight="Bold" BorderBrush="White" Foreground="White" BorderThickness="5,5,5,5"
+            Click="SpelenButtonClick"
             />
         <Button
             Panel.ZIndex="1"
@@ -60,7 +57,7 @@
             Grid.Column="1"
             Grid.Row="3"
             Grid.ColumnSpan="3"
-            Click="HighscoresButtonClick" Background="{x:Null}" Foreground="White" FontWeight="Bold" BorderThickness="5,5,5,5" BorderBrush="White" FontFamily="Impact"
+            Click="HighscoresButtonClick"
             />
         <Button
             Panel.ZIndex="1"
@@ -69,7 +66,7 @@
             FontSize="50"
             Grid.Column="1"
             Grid.Row="5"
-            Click="OptiesButtonClick" BorderBrush="White" Foreground="White" Background="{x:Null}" BorderThickness="5,5,5,5" FontWeight="Bold" FontFamily="Impact"
+            Click="OptiesButtonClick"
             />
         <Button
             Panel.ZIndex="1"
@@ -78,7 +75,7 @@
             FontSize="50"
             Grid.Column="3"
             Grid.Row="5"
-            Click="StoppenButtonClick" Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" FontWeight="Bold" Background="{x:Null}" FontFamily="Impact"
+            Click="StoppenButtonClick"
             />
     </Grid>
 </Window>

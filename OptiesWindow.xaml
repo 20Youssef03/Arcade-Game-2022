@@ -7,15 +7,12 @@
         mc:Ignorable="d"
         Title="OptiesWindow"
         Height="864"
-        Width="1536"
+        Width="1578"
         WindowState="Maximized"
         WindowStyle="None"
         Left="0"
         Top="0">
-    <Grid Width="1536">
-        <Grid.Background>
-            <ImageBrush ImageSource="/achtergrond.png"/>
-        </Grid.Background>
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
@@ -25,13 +22,13 @@
             Content="Terug"
             FontSize="60"
             Click="TerugButtonClick"
-            Margin="35,630,1230,75"
+            Margin="59,620,1288,145"
             RenderTransformOrigin="0.495,0.773"
             Background="{x:Null}"
             FontFamily="Impact"
             FontWeight="Bold"
-            BorderBrush="White"
-            BorderThickness="5,5,5,5" Foreground="White"
+            BorderBrush="Black"
+            BorderThickness="5,5,5,5"
             >
             <Button.RenderTransform>
                 <TransformGroup>
@@ -45,7 +42,7 @@
         <Border
             x:Name="Border_1"
             BorderThickness="6,6,6,6"
-            BorderBrush="White"
+            BorderBrush="Black"
             Margin="349,139,349,75"
             />
         <Label
@@ -58,9 +55,9 @@
             FontWeight="Bold"
             FontFamily="Impact"
             BorderThickness="5,5,5,5"
-            BorderBrush="White"
+            BorderBrush="Black"
             Width="348"
-            Height="108" Foreground="White"
+            Height="108"
             />
         <Label
             x:Name="Label_Geluid"
@@ -71,7 +68,7 @@
             FontSize="60"
             FontWeight="Bold"
             FontFamily="Impact"
-            Width="185" Foreground="White"
+            Width="185"
             />
         <Label
             x:Name="Label_SoundEffects"
@@ -81,7 +78,7 @@
             VerticalAlignment="Top"
             FontSize="60"
             FontFamily="Impact"
-            FontWeight="Bold" Foreground="White"
+            FontWeight="Bold"
             />
         <Label
             x:Name="Label_Muziek"
@@ -91,22 +88,22 @@
             VerticalAlignment="Top"
             FontFamily="Impact"
             FontSize="60"
-            FontWeight="Bold" Foreground="White"
+            FontWeight="Bold"
             />
         <Button
-            x:Name="OptieWindowButtonHelp"
+            x:Name="ButtonHelp"
             Content="Help"
             HorizontalAlignment="Left"
-            Margin="35,432,0,0"
+            Margin="1285,620,0,0"
             VerticalAlignment="Top"
             FontFamily="Impact"
             FontSize="60"
             FontWeight="Bold"
-            BorderBrush="White"
+            BorderBrush="Black"
             BorderThickness="5,5,5,5"
             Background="{x:Null}"
-            Width="269"
-            Height="166" Foreground="White" Click="OptieWindowButtonHelp_Click"
+            Width="230"
+            Height="106"
             />
         <Button 
             x:Name="CheckboxMuziekButton1"
@@ -117,11 +114,11 @@
             Background="{x:Null}"
             Height="83"
             Width="79"
-            BorderBrush="White"
+            BorderBrush="Black"
             BorderThickness="5,5,5,5"
             FontWeight="Normal"
             FontFamily="Impact"
-            FontSize="60" Foreground="White"
+            FontSize="60"
             />
         <Button 
             x:Name="CheckboxMuziekButton2"
@@ -136,7 +133,7 @@
             FontSize="60"
             FontWeight="Bold"
             BorderThickness="5,5,5,5"
-            BorderBrush="White"
+            BorderBrush="Black"
             />
         <Button 
             x:Name="CheckboxGeluidButton1"
@@ -147,7 +144,7 @@
             Height="84"
             Width="79"
             Background="{x:Null}"
-            BorderBrush="White"
+            BorderBrush="Black"
             BorderThickness="5,5,5,5"
             FontFamily="Impact"
             FontSize="60"
@@ -162,7 +159,7 @@
             Height="83"
             Width="79"
             Background="{x:Null}"
-            BorderBrush="White"
+            BorderBrush="Black"
             BorderThickness="5,5,5,5"
             FontFamily="Impact"
             FontSize="60"
@@ -177,7 +174,7 @@
             Height="83"
             Width="79"
             Background="{x:Null}"
-            BorderBrush="White"
+            BorderBrush="Black"
             BorderThickness="5,5,5,5"
             FontWeight="Normal"
             FontFamily="Impact"
@@ -192,7 +189,7 @@
             Height="83"
             Width="79"
             Background="{x:Null}"
-            BorderBrush="White"
+            BorderBrush="Black"
             BorderThickness="5,5,5,5"
             FontFamily="Impact"
             FontSize="60"
