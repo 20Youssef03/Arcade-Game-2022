@@ -74,8 +74,8 @@ namespace ArcadeGame2022
         {
             if (SpelenButton.Background == Brushes.LightGray)
             {
-                Arcade_Game_2022.HelpWindow helpWindow = new Arcade_Game_2022.HelpWindow(this, imageSource1, imageSource2, spelerNaam1, NaamInvoer.Text);
-                helpWindow.Visibility = Visibility.Visible;
+                SpelenWindow spelenWindow = new SpelenWindow(imageSource1, imageSource2, spelerNaam1, NaamInvoer.Text);
+                spelenWindow.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Hidden;
             }
         }

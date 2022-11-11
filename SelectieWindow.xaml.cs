@@ -1,5 +1,4 @@
-﻿using Arcade_Game_2022;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -71,8 +70,8 @@ namespace ArcadeGame2022
         {
             if (SpelenButton.Background == Brushes.LightGray && aantalSpelers == 1)
             {
-                HelpWindow helpWindow = new HelpWindow(this, imageSource, null, NaamInvoer.Text, null);
-                helpWindow.Visibility = Visibility.Visible;
+                SpelenWindow spelenWindow = new SpelenWindow(imageSource, null, NaamInvoer.Text, null);
+                spelenWindow.Visibility = Visibility.Visible;
                 this.Visibility = Visibility.Hidden;
             }
             else if (SpelenButton.Background == Brushes.LightGray)

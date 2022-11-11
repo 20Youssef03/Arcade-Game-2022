@@ -13,6 +13,9 @@
         Left="0"
         Top="0">
     <Grid x:Name="MainGrid">
+        <Grid.Background>
+            <ImageBrush ImageSource="/achtergrond.png"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -37,7 +40,7 @@
             Grid.Row="0"
             Grid.ColumnSpan="3"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            VerticalAlignment="Center" Foreground="White" FontFamily="Impact" FontWeight="Bold"
             />
         <Button
             Panel.ZIndex="1"
@@ -47,7 +50,7 @@
             Grid.Column="1"
             Grid.Row="1"
             Grid.ColumnSpan="3"
-            Click="SpelenButtonClick"
+            Click="SpelenButtonClick" Background="{x:Null}" FontFamily="Impact" FontWeight="Bold" BorderBrush="White" Foreground="White" BorderThickness="5,5,5,5"
             />
         <Button
             Panel.ZIndex="1"
@@ -57,7 +60,7 @@
             Grid.Column="1"
             Grid.Row="3"
             Grid.ColumnSpan="3"
-            Click="HighscoresButtonClick"
+            Click="HighscoresButtonClick" Background="{x:Null}" Foreground="White" FontWeight="Bold" BorderThickness="5,5,5,5" BorderBrush="White" FontFamily="Impact"
             />
         <Button
             Panel.ZIndex="1"
@@ -66,7 +69,7 @@
             FontSize="50"
             Grid.Column="1"
             Grid.Row="5"
-            Click="OptiesButtonClick"
+            Click="OptiesButtonClick" BorderBrush="White" Foreground="White" Background="{x:Null}" BorderThickness="5,5,5,5" FontWeight="Bold" FontFamily="Impact"
             />
         <Button
             Panel.ZIndex="1"
@@ -75,7 +78,7 @@
             FontSize="50"
             Grid.Column="3"
             Grid.Row="5"
-            Click="StoppenButtonClick"
+            Click="StoppenButtonClick" Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" FontWeight="Bold" Background="{x:Null}" FontFamily="Impact"
             />
     </Grid>
 </Window>
