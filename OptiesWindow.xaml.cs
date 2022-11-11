@@ -29,10 +29,5 @@ namespace ArcadeGame2022
             window.Visibility = Visibility.Visible;
             this.Visibility = Visibility.Hidden;
         }
-
-        private void OptieWindowButtonHelp_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }
