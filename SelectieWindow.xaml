@@ -13,9 +13,6 @@
         Left="0"
         Top="0">
     <Grid x:Name="SelectieGrid">
-        <Grid.Background>
-            <ImageBrush ImageSource="/achtergrond.png"/>
-        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="54"/>
             <ColumnDefinition Width="1*"/>
@@ -65,7 +62,7 @@
             Grid.Column="1"
             Grid.Row="3"
             Grid.ColumnSpan="2"
-            Click="Optie1Click" Foreground="White" FontFamily="Impact" FontWeight="Bold" BorderBrush="White" BorderThickness="5,5,5,5"
+            Click="Optie1Click"
             />
         <Rectangle
             x:Name="Optie1"
@@ -82,7 +79,7 @@
             Opacity="0.4"
             Grid.Column="4"
             Grid.Row="3"
-            Click="Optie2Click" Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" FontWeight="Bold" FontFamily="Impact"
+            Click="Optie2Click"
             />
         <Rectangle
             x:Name="Optie2"
@@ -99,7 +96,7 @@
             Grid.Column="1"
             Grid.Row="5"
             Grid.ColumnSpan="2"
-            Click="Optie3Click" BorderBrush="White" Foreground="White" FontFamily="Impact" BorderThickness="5,5,5,5" FontWeight="Bold"
+            Click="Optie3Click"
             />
         <Rectangle
             x:Name="Optie3"
@@ -116,7 +113,7 @@
             Opacity="0.4"
             Grid.Column="4"
             Grid.Row="5"
-            Click="Optie4Click" BorderBrush="White" Foreground="White" FontFamily="Impact" FontWeight="Bold" BorderThickness="5,5,5,5"
+            Click="Optie4Click"
             />
         <Rectangle
             x:Name="Optie4"
@@ -129,7 +126,7 @@
             FontSize="50"
             Grid.Column="6"
             Grid.Row="5"
-            Click="TerugButtonClick" BorderBrush="White" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Impact" FontWeight="Bold" Background="{x:Null}"
+            Click="TerugButtonClick"
             />
         <Button
             x:Name="SpelenButton"
@@ -137,7 +134,7 @@
             FontSize="50"
             Grid.Column="6"
             Grid.Row="3"
-            Click="SpelenButtonClick" Foreground="White" FontFamily="Impact" FontWeight="Bold" BorderBrush="White" BorderThickness="5,5,5,5" Background="{x:Null}"
+            Click="SpelenButtonClick"
             />
         <Button
             x:Name="EenSpelerButton"
@@ -146,7 +143,7 @@
             Background="#9900ff00"
             Grid.Column="1"
             Grid.Row="1"
-            Click="EenSpelerButtonClick" BorderBrush="White" BorderThickness="5,5,5,5" FontWeight="Bold" Foreground="White" FontFamily="Impact"
+            Click="EenSpelerButtonClick"
             />
         <Button
             x:Name="TweeSpelersButton"
@@ -154,16 +151,16 @@
             FontSize="50"
             Grid.Column="2"
             Grid.Row="1"
-            Click="TweeSpelersButtonClick" Background="{x:Null}" BorderBrush="White" BorderThickness="5,5,5,5" FontWeight="Bold" Foreground="White" FontFamily="Impact"
+            Click="TweeSpelersButtonClick"
             />
         <TextBox
             x:Name="NaamInvoer"
             Text="Naam..."
-            Foreground="White"
+            Foreground="#99000000"
             FontSize="50"
             Grid.Column="4"
             Grid.Row="1"
-            TextChanged="OnTextChanged" FontFamily="Impact" FontWeight="Bold" BorderBrush="White" BorderThickness="5,5,5,5" Background="{x:Null}"
+            TextChanged="OnTextChanged"
             />
     </Grid>
 </Window>

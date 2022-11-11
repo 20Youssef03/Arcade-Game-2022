@@ -5,18 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Arcade_Game_2022"
         mc:Ignorable="d"
-        Title="HelpWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.Background>
+        Title="HelpWindow"
+        Height="864"
+        Width="1536"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Left="0"
+        Top="0">
+    <Canvas x:Name="HelpCanvas">
+        <Canvas.Background>
             <ImageBrush ImageSource="/achtergrond.png"/>
-        </Grid.Background>
-        <Border BorderThickness="5,5,5,5" BorderBrush="#FF4C9F26" Margin="182,82,182,64">
+        </Canvas.Background>
+        <Border BorderThickness="5,5,5,5" BorderBrush="#FF4C9F26" Height="245" Canvas.Left="269" Canvas.Top="187" Width="364">
             <Border.Background>
                 <ImageBrush ImageSource="/video-game-doodle-wasd-keyboard-keys-used-pc-games-gaming-concept-235629200.jpg"/>
             </Border.Background>
         </Border>
-        <Label Content="  Help" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" Foreground="#FFE2E7DF" FontWeight="Bold" BorderBrush="#FF459934" BorderThickness="5,5,5,5" Height="63" Width="140" FontSize="36"/>
-        <Button x:Name="HelpWindowTerugButton" Content="Terug" HorizontalAlignment="Left" Margin="26,284,0,0" VerticalAlignment="Top" Height="86" Width="132" Background="{x:Null}" BorderBrush="#FFE2E7DF" BorderThickness="5,5,5,5" FontWeight="Bold" Foreground="#FFE2E7DF" FontFamily="Impact" FontSize="36" Click="HelpWindowTerugButton_Click"/>
-
-    </Grid>
+        <Label Canvas.Left="269" Canvas.Top="106" Content="          Bewegen" VerticalAlignment="Top" Foreground="#FFE2E7DF" FontWeight="Bold" BorderBrush="#FF459934" BorderThickness="5,5,5,5" Height="76" Width="364" FontSize="36" HorizontalAlignment="Center"/>
+        <Button
+            x:Name="SpelenButton"
+            Content="Spelen"
+            Canvas.Left="1304"
+            Canvas.Top="650"
+            Height="86"
+            Width="132"
+            Background="{x:Null}"
+            BorderBrush="#FFE2E7DF"
+            BorderThickness="5,5,5,5"
+            FontWeight="Bold"
+            Foreground="#FFE2E7DF"
+            FontFamily="Impact"
+            FontSize="36"
+            Click="SpelenButtonClick"
+            />
+        <Button
+            x:Name="TerugButton"
+            Content="Terug"
+            Height="86"
+            Width="132"
+            Canvas.Left="100"
+            Canvas.Top="650"
+            Background="{x:Null}"
+            BorderBrush="#FFE2E7DF"
+            BorderThickness="5,5,5,5"
+            FontWeight="Bold"
+            Foreground="#FFE2E7DF"
+            FontFamily="Impact"
+            FontSize="36"
+            Click="TerugButtonClick"
+            />
+        <Label Canvas.Left="877" Canvas.Top="106" Content="           Punten" Foreground="#FFE2E7DF" FontWeight="Bold" BorderBrush="#FF459934" BorderThickness="5,5,5,5" Height="76" Width="364" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle x:Name="punt" Height="269" Width="270" Canvas.Left="924" Canvas.Top="187"/>
+        <Label Canvas.Left="269" Canvas.Top="468" Content="         Obstakels" Foreground="#FFE2E7DF" FontWeight="Bold" BorderBrush="#FF459934" BorderThickness="5,5,5,5" Height="76" Width="364" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Rectangle Width="100" Height="100" Fill="Black" Canvas.Left="310" Canvas.Top="593"/>
+        <Rectangle Width="100" Height="100" Fill="Purple" Canvas.Left="496" Canvas.Top="593" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    </Canvas>
 </Window>
