@@ -444,7 +444,7 @@ namespace ArcadeGame2022
             string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\stefa\\Desktop\\Arcade-Game-2022\\Data\\Database1.mdf;Integrated Security=True";
             string naam;
             int score;
-            if (huidigeSpeler == 2)
+            if (huidigeSpeler == 1)
             {
                 naam = spelerNaam1;
                 levens = levensSpeler1;
