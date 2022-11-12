@@ -4,20 +4,14 @@ using System.Data.SqlClient;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Collections;
 using System.Media;
-using System.DirectoryServices;
-using System.Windows.Markup;
 
 namespace ArcadeGame2022
 {
@@ -37,18 +31,32 @@ namespace ArcadeGame2022
         private double levelSpeler1 = 0;
         private double levelSpeler2 = 0;
         private int punten = 0;
-        private int puntenSpeler1 = 0;
         private int puntenSpeler2 = 0;
+        private int puntenSpeler1 = 0;
+        private int levens = 4;
+        private int levensSpeler1 = 4;
+        private int levensSpeler2 = 4;
         private int huidigeSpeler = 1;
+        private int aantalSpelers;
         private string spelerNaam1;
         private string spelerNaam2;
         private ImageSource imageSource1;
         private ImageSource imageSource2;
         private List<Rectangle> itemsToRemove = new List<Rectangle>();
+        private string currentDirectory = Directory.GetCurrentDirectory();
+        private bool winnaar = false;
         public SpelenWindow(ImageSource imageSource1, ImageSource imageSource2, string spelerNaam1, string spelerNaam2)
         {
             InitializeComponent();
 
+            if (spelerNaam2 != null)
+            {
+                aantalSpelers = 2;
+            }
+            else
+            {
+                aantalSpelers = 1;
+            }
 
             this.spelerNaam1 = spelerNaam1;
             this.spelerNaam2 = spelerNaam2;
@@ -71,7 +79,7 @@ namespace ArcadeGame2022
                 {
                     x.Fill = new ImageBrush // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
                     {
-                        ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../../Images/gras blok platform.jpg")), // /bin/Debug/netcoreapp3.1/Images/gras blok platform.png
+                        ImageSource = new BitmapImage(new Uri(currentDirectory + "/../../../Images/gras blok platform.jpg")), // /bin/Debug/netcoreapp3.1/Images/gras blok platform.png
                         TileMode = TileMode.Tile,
                         ViewportUnits = BrushMappingMode.Absolute,
                         Viewport = new Rect(0, 0, 50, 50)
@@ -89,12 +97,14 @@ namespace ArcadeGame2022
 
         private void GameEngine(object sender, EventArgs e)
         {
+            LevelTekst.Text = huidigeSpeler.ToString();
             VerticaleBeweging();
 
             // Horizontale beweging wordt apart bepaald om te voorkomen dat de speler de verkeerde kant op wordt verplaatst
             HorizontaleBeweging();
 
             BeweegVijanden();
+
         }
 
         /// <summary>
@@ -125,7 +135,18 @@ namespace ArcadeGame2022
                 PuntenTekst.Text = "Punten: " + punten.ToString();
             }
             if (e.Key == Key.D7)
+            {
+                if (huidigeSpeler == 1)
+                {
+                    huidigeSpeler = 2;
+                }
+                else
+                {
+                    huidigeSpeler = 1;
+                }
+                winnaar = true;
                 WinSpel();
+            }
             if (e.Key == Key.D9)
                 Application.Current.Shutdown();
         }
@@ -296,7 +317,18 @@ namespace ArcadeGame2022
                             Rect End = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
                             if (speler.IntersectsWith(End))
                             {
-                                WinSpel();
+                                if (huidigeSpeler == 1)
+                                {
+                                    huidigeSpeler = 2;
+                                    winnaar = true;
+                                    WinSpel();
+                                }
+                                else
+                                {
+                                    huidigeSpeler = 1;
+                                    winnaar = true;
+                                    WinSpel();
+                                }
                             }
                         }
                     }
@@ -342,47 +374,18 @@ namespace ArcadeGame2022
         {
             if (huidigeSpeler == 1)
             {
-                puntenSpeler1 = punten;
-                punten = puntenSpeler2;
-                SpelerTekst.Text = "Speler: " + spelerNaam1;
-                foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
-                {
-                    if (x.Name == "Speler")
-                    {
-                        x.Fill = new ImageBrush
-                        {
-                            ImageSource = imageSource1
-                        };
-                    }
-                }
-                huidigeSpeler = 2;
-                HerstartSpel(null, null);
-                level = levelSpeler2;
+                WisselSpeler2();
             }
             else
             {
-                puntenSpeler2 = punten;
-                punten = puntenSpeler1;
-                SpelerTekst.Text = "Speler: " + spelerNaam2;
-                foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
-                {
-                    if (x.Name == "Speler")
-                    {
-                        x.Fill = new ImageBrush
-                        {
-                            ImageSource = imageSource2
-                        };
-                    }
-                }
-                huidigeSpeler = 1;
-                HerstartSpel(null, null);
-                level = levelSpeler1;
+                WisselSpeler1();
             }
             foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
             {
                 if (x.Name != "Speler")
                 {
-                    Canvas.SetTop(x, Canvas.GetTop(x) - 1000 * level); // Beweeg alle blokken 1000 pixels omhoog zodat het volgende level de plaats van de vorige inneemt
+                    if (aantalSpelers == 2)
+                        Canvas.SetTop(x, Canvas.GetTop(x) - 1000 * level); // Beweeg alle blokken 1000 pixels omhoog zodat het volgende level de plaats van de vorige inneemt
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - levelPositie); // Beweeg alle blokken terug naar de horizontale startpositie
                 }
                 else
@@ -413,16 +416,17 @@ namespace ArcadeGame2022
             if (huidigeSpeler == 1 && e != null)
             {
                 levelSpeler1 = 0;
+                punten = 0;
             }
             else if (e != null)
             {
                 levelSpeler2 = 0;
+                punten = 0;
             }
             LevelTekst.Text = "Level 1";
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
             PlaatsVijanden();
-            punten = 0;
             PuntenTekst.Text = "Punten: " + punten.ToString(); //reset de punten naar 0
         }
 
@@ -449,10 +453,44 @@ namespace ArcadeGame2022
 
         private void WinSpel()
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + System.IO.Path.GetFullPath(System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\")) + "Data\\Database1.mdf\";Integrated Security=True";
-            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", spelerNaam1, puntenSpeler1, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
-            if (spelerNaam2 != null)
-                query += String.Format(", ('{0}', '{1}', '{2}', '{3}')", spelerNaam2, puntenSpeler2, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Ja");
+            /*string test = "hoi";
+            string curdir = currentDirectory;
+            string combi = System.IO.Path.Combine(curdir, "..\\..\\..\\");
+            string fullpa = System.IO.Path.GetFullPath(combi);*/
+            //string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + fullpa + "Data\\Database1.mdf\";Integrated Security=True";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\stefa\\Desktop\\Arcade-Game-2022\\Data\\Database1.mdf;Integrated Security=True";
+            string naam;
+            int score;
+            if (huidigeSpeler == 1)
+            {
+                naam = spelerNaam1;
+                levens = levensSpeler1;
+                HerstartLevel();
+                if (winnaar || spelerNaam2 == null)
+                    score = puntenSpeler2;
+                else
+                    score = puntenSpeler1;
+            }
+            else
+            {
+                naam = spelerNaam2;
+                levens = levensSpeler2;
+                HerstartLevel();
+                if (winnaar)
+                    score = puntenSpeler1;
+                else
+                    score = puntenSpeler2;
+            }
+            aantalSpelers--;
+            string gewonnenTekst;
+            if (levens > 0)
+                gewonnenTekst = "Ja";
+            else
+            {
+                gewonnenTekst = "Nee";
+                HerstartLevel();
+            }
+            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", naam, score, DateTime.Today.Date.ToString("yyyy-MM-dd"), gewonnenTekst);
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
             try
@@ -467,6 +505,66 @@ namespace ArcadeGame2022
             catch (IOException)
             {
                 connection.Close();
+            }
+            if (aantalSpelers == 0)
+                Application.Current.Shutdown();
+            HerstartLevel();
+        }
+
+        private void WisselSpeler1()
+        {
+            levensSpeler2--;
+            LevensTekst.Text = "Levens: " + levensSpeler2;
+            puntenSpeler1 = punten;
+            if (levensSpeler2 == 0)
+            {
+                WinSpel();
+            }
+            if (aantalSpelers == 2)
+            {
+                SpelerTekst.Text = "Speler: " + spelerNaam2;
+                punten = puntenSpeler2;
+                foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
+                {
+                    if (x.Name == "Speler")
+                    {
+                        x.Fill = new ImageBrush
+                        {
+                            ImageSource = imageSource2
+                        };
+                    }
+                }
+                huidigeSpeler = 1;
+                HerstartSpel(null, null);
+                level = levelSpeler1;
+            }
+        }
+        private void WisselSpeler2()
+        {
+            levensSpeler1--;
+            LevensTekst.Text = "Levens: " + levensSpeler1;
+            puntenSpeler2 = punten;
+            if (levensSpeler1 == 0)
+            {
+                WinSpel();
+            }
+            if (aantalSpelers == 2)
+            {
+                SpelerTekst.Text = "Speler: " + spelerNaam1;
+                punten = puntenSpeler1;
+                foreach (Rectangle x in SpelenCanvas.Children.OfType<Rectangle>())
+                {
+                    if (x.Name == "Speler")
+                    {
+                        x.Fill = new ImageBrush
+                        {
+                            ImageSource = imageSource1
+                        };
+                    }
+                }
+                huidigeSpeler = 2;
+                HerstartSpel(null, null);
+                level = levelSpeler2;
             }
         }
 
