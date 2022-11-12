@@ -45,6 +45,7 @@ namespace ArcadeGame2022
         private List<Rectangle> itemsToRemove = new List<Rectangle>();
         private string currentDirectory = Directory.GetCurrentDirectory();
         private bool winnaar = false;
+        private bool uitgevoerd = false;
         public SpelenWindow(ImageSource imageSource1, ImageSource imageSource2, string spelerNaam1, string spelerNaam2)
         {
             InitializeComponent();
@@ -97,7 +98,6 @@ namespace ArcadeGame2022
 
         private void GameEngine(object sender, EventArgs e)
         {
-            LevelTekst.Text = huidigeSpeler.ToString();
             VerticaleBeweging();
 
             // Horizontale beweging wordt apart bepaald om te voorkomen dat de speler de verkeerde kant op wordt verplaatst
@@ -105,6 +105,10 @@ namespace ArcadeGame2022
 
             BeweegVijanden();
 
+            if (huidigeSpeler == 1)
+                LevensTekst.Text = "Levens: " + levensSpeler1.ToString();
+            else
+                LevensTekst.Text = "Levens: " + (levensSpeler2 - 1).ToString();
         }
 
         /// <summary>
@@ -136,14 +140,6 @@ namespace ArcadeGame2022
             }
             if (e.Key == Key.D7)
             {
-                if (huidigeSpeler == 1)
-                {
-                    huidigeSpeler = 2;
-                }
-                else
-                {
-                    huidigeSpeler = 1;
-                }
                 winnaar = true;
                 WinSpel();
             }
@@ -416,13 +412,17 @@ namespace ArcadeGame2022
             if (huidigeSpeler == 1 && e != null)
             {
                 levelSpeler1 = 0;
+                levensSpeler1 = 3;
                 punten = 0;
             }
             else if (e != null)
             {
                 levelSpeler2 = 0;
+                levensSpeler2 = 3;
                 punten = 0;
             }
+            levens = 3;
+            LevensTekst.Text = "Levens: 3";
             LevelTekst.Text = "Level 1";
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
@@ -446,6 +446,7 @@ namespace ArcadeGame2022
         {
             // Net als VerticaleBeweging() maar specifiek voor de vijanden
         }
+
         private void HorizontaleBewegingVijanden()
         {
             // Net als HorizontaleBeweging() maar specifiek voor de vijanden
@@ -459,38 +460,45 @@ namespace ArcadeGame2022
             string fullpa = System.IO.Path.GetFullPath(combi);*/
             //string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + fullpa + "Data\\Database1.mdf\";Integrated Security=True";
             string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\stefa\\Desktop\\Arcade-Game-2022\\Data\\Database1.mdf;Integrated Security=True";
-            string naam;
-            int score;
-            if (huidigeSpeler == 1)
+            string naam1;
+            int score1;
+            string naam2;
+            int score2;
+            if (huidigeSpeler == 1) // Speler 2 wint of niemand wint
             {
-                naam = spelerNaam1;
+                naam2 = spelerNaam1;
+                naam1 = spelerNaam2;
                 levens = levensSpeler1;
                 HerstartLevel();
-                if (winnaar || spelerNaam2 == null)
-                    score = puntenSpeler2;
-                else
-                    score = puntenSpeler1;
+                score1 = puntenSpeler2;
+                score2 = puntenSpeler1;
             }
-            else
+            else // Speler 1 wint
             {
-                naam = spelerNaam2;
+                naam2 = spelerNaam2;
+                naam1 = spelerNaam1;
                 levens = levensSpeler2;
                 HerstartLevel();
-                if (winnaar)
-                    score = puntenSpeler1;
-                else
-                    score = puntenSpeler2;
+                score1 = puntenSpeler1;
+                score2 = puntenSpeler2;
+            }
+            if (spelerNaam2 == null) // 1 spelerq
+            {
+                naam1 = spelerNaam1;
+                levens = levensSpeler1;
+                score1 = puntenSpeler2;
             }
             aantalSpelers--;
             string gewonnenTekst;
-            if (levens > 0)
+            if (winnaar)
                 gewonnenTekst = "Ja";
             else
             {
                 gewonnenTekst = "Nee";
-                HerstartLevel();
             }
-            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", naam, score, DateTime.Today.Date.ToString("yyyy-MM-dd"), gewonnenTekst);
+            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", naam1, score1, DateTime.Today.Date.ToString("yyyy-MM-dd"), gewonnenTekst);
+            if (spelerNaam2 != null)
+                query += String.Format(", ('{0}', '{1}', '{2}', '{3}')", naam2, score2, DateTime.Today.Date.ToString("yyyy-MM-dd"), "Nee");
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
             try
@@ -499,16 +507,14 @@ namespace ArcadeGame2022
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
                 connection.Open();
-                command.ExecuteNonQuery();
+                command.ExecuteNonQuery(); // herhaalt?
                 connection.Close();
             }
             catch (IOException)
             {
                 connection.Close();
             }
-            if (aantalSpelers == 0)
-                Application.Current.Shutdown();
-            HerstartLevel();
+            Application.Current.Shutdown();
         }
 
         private void WisselSpeler1()
@@ -570,7 +576,7 @@ namespace ArcadeGame2022
 
         private void Button_click(object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(@"C:\Users\Lavar\source\repos\New folder (10)\Singing nightingale. The best bird song..wav");
+            SoundPlayer player = new SoundPlayer(currentDirectory + "/../../../Singing nightingale. The best bird song..wav");
             player.Load();
             player.Play();
             //achtergrond muziek wordt afgespeeld na klikken op geluidsknop 
