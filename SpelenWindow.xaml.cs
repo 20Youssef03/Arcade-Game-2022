@@ -4,20 +4,14 @@ using System.Data.SqlClient;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Collections;
 using System.Media;
-using System.DirectoryServices;
-using System.Windows.Markup;
 
 namespace ArcadeGame2022
 {
@@ -50,6 +44,7 @@ namespace ArcadeGame2022
         private ImageSource imageSource2;
         private List<Rectangle> itemsToRemove = new List<Rectangle>();
         private string currentDirectory = Directory.GetCurrentDirectory();
+        private bool winnaar = false;
         public SpelenWindow(ImageSource imageSource1, ImageSource imageSource2, string spelerNaam1, string spelerNaam2)
         {
             InitializeComponent();
@@ -140,7 +135,18 @@ namespace ArcadeGame2022
                 PuntenTekst.Text = "Punten: " + punten.ToString();
             }
             if (e.Key == Key.D7)
+            {
+                if (huidigeSpeler == 1)
+                {
+                    huidigeSpeler = 2;
+                }
+                else
+                {
+                    huidigeSpeler = 1;
+                }
+                winnaar = true;
                 WinSpel();
+            }
             if (e.Key == Key.D9)
                 Application.Current.Shutdown();
         }
@@ -311,7 +317,18 @@ namespace ArcadeGame2022
                             Rect End = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
                             if (speler.IntersectsWith(End))
                             {
-                                WinSpel();
+                                if (huidigeSpeler == 1)
+                                {
+                                    huidigeSpeler = 2;
+                                    winnaar = true;
+                                    WinSpel();
+                                }
+                                else
+                                {
+                                    huidigeSpeler = 1;
+                                    winnaar = true;
+                                    WinSpel();
+                                }
                             }
                         }
                     }
@@ -449,25 +466,31 @@ namespace ArcadeGame2022
                 naam = spelerNaam1;
                 levens = levensSpeler1;
                 HerstartLevel();
-                score = puntenSpeler1;
+                if (winnaar || spelerNaam2 == null)
+                    score = puntenSpeler2;
+                else
+                    score = puntenSpeler1;
             }
             else
             {
                 naam = spelerNaam2;
                 levens = levensSpeler2;
                 HerstartLevel();
-                score = puntenSpeler2;
+                if (winnaar)
+                    score = puntenSpeler1;
+                else
+                    score = puntenSpeler2;
             }
             aantalSpelers--;
-            string gewonnen;
+            string gewonnenTekst;
             if (levens > 0)
-                gewonnen = "Ja";
+                gewonnenTekst = "Ja";
             else
             {
-                gewonnen = "Nee";
+                gewonnenTekst = "Nee";
                 HerstartLevel();
             }
-            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", naam, score, DateTime.Today.Date.ToString("yyyy-MM-dd"), gewonnen);
+            string query = String.Format("INSERT INTO [Highscores] ([Speler], [Score], [Datum], [Gewonnen]) VALUES ('{0}', '{1}', '{2}', '{3}')", naam, score, DateTime.Today.Date.ToString("yyyy-MM-dd"), gewonnenTekst);
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
             try
@@ -485,6 +508,7 @@ namespace ArcadeGame2022
             }
             if (aantalSpelers == 0)
                 Application.Current.Shutdown();
+            HerstartLevel();
         }
 
         private void WisselSpeler1()
