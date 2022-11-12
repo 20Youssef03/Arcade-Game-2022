@@ -451,6 +451,12 @@ namespace ArcadeGame2022
             // Net als HorizontaleBeweging() maar specifiek voor de vijanden
         }
 
+        // TODO
+        // geen speler wint --> werkt juist
+        // alleen speler 1 wint --> speler 2 ziet eruit als speler 1
+        // alleen speler 2 wint --> score speler 1 wordt 0, speler 1 ziet eruit als speler 2
+        // speler 1 wint eerst --> speler 2 staat als speler 1 in database en ziet eruit als speler 1
+        // speler 2 wint eerst --> speler 1 staat als speler 2 in database en ziet eruit als speler 2, score speler 1 wordt 0
         private void WinSpel()
         {
             /*string test = "hoi";
@@ -466,7 +472,7 @@ namespace ArcadeGame2022
                 naam = spelerNaam1;
                 levens = levensSpeler1;
                 HerstartLevel();
-                if (winnaar || spelerNaam2 == null)
+                if (winnaar)
                     score = puntenSpeler2;
                 else
                     score = puntenSpeler1;
@@ -476,6 +482,15 @@ namespace ArcadeGame2022
                 naam = spelerNaam2;
                 levens = levensSpeler2;
                 HerstartLevel();
+                if (winnaar)
+                    score = puntenSpeler1;
+                else
+                    score = puntenSpeler2;
+            }
+            if (spelerNaam2 == null)
+            {
+                naam = spelerNaam1;
+                levens = levensSpeler1;
                 if (winnaar)
                     score = puntenSpeler1;
                 else
