@@ -33,7 +33,6 @@ namespace ArcadeGame2022
         private int punten = 0;
         private int puntenSpeler2 = 0;
         private int puntenSpeler1 = 0;
-        private int levens = 4;
         private int levensSpeler1 = 4;
         private int levensSpeler2 = 4;
         private int huidigeSpeler = 1;
@@ -86,9 +85,16 @@ namespace ArcadeGame2022
                         Viewport = new Rect(0, 0, 50, 50)
                     };
                 }
+                else if ((string)x.Tag == "Munt")
+                {
+                    x.Fill = new ImageBrush // Methode in de reader werkte niet, methode in Microsoft documentatie ook niet, vandaar de Directory.GetCurrentDirectory()
+                    {
+                        ImageSource = new BitmapImage(new Uri(currentDirectory + "/../../../Images/munt.png")), // /bin/Debug/netcoreapp3.1/Images/gras blok platform.png
+                        ViewportUnits = BrushMappingMode.Absolute,
+                        Viewport = new Rect(0, 0, 35, 35)
+                    };
+                }
             }
-
-            PlaatsVijanden();
 
             gameTimer.Interval = TimeSpan.FromMilliseconds(10);
             gameTimer.Tick += GameEngine;
@@ -102,8 +108,6 @@ namespace ArcadeGame2022
 
             // Horizontale beweging wordt apart bepaald om te voorkomen dat de speler de verkeerde kant op wordt verplaatst
             HorizontaleBeweging();
-
-            BeweegVijanden();
 
             if (huidigeSpeler == 1)
                 LevensTekst.Text = "Levens: " + levensSpeler1.ToString();
@@ -123,28 +127,8 @@ namespace ArcadeGame2022
                 moveLeft = true;
             if (e.Key == Key.Right || e.Key == Key.D)
                 moveRight = true;
-            if (e.Key == Key.Up || e.Key == Key.Space || e.Key == Key.W)
+            if (e.Key == Key.Up || e.Key == Key.W)
                 jump = true;
-
-            // Tijdelijk, voor debuggen
-            if (e.Key == Key.D1)
-                VolgendLevel();
-            if (e.Key == Key.D2)
-                HerstartLevel();
-            if (e.Key == Key.D3)
-                HerstartSpel(null, null);
-            if (e.Key == Key.D6)
-            {
-                punten += 1;
-                PuntenTekst.Text = "Punten: " + punten.ToString();
-            }
-            if (e.Key == Key.D7)
-            {
-                winnaar = true;
-                WinSpel();
-            }
-            if (e.Key == Key.D9)
-                Application.Current.Shutdown();
         }
 
         /// <summary>
@@ -169,7 +153,7 @@ namespace ArcadeGame2022
                 moveLeft = false;
             if (e.Key == Key.Right || e.Key == Key.D)
                 moveRight = false;
-            if (e.Key == Key.Up || e.Key == Key.Space || e.Key == Key.W)
+            if (e.Key == Key.Up || e.Key == Key.W)
                 jump = false;
         }
 
@@ -315,13 +299,11 @@ namespace ArcadeGame2022
                             {
                                 if (huidigeSpeler == 1)
                                 {
-                                    huidigeSpeler = 2;
                                     winnaar = true;
                                     WinSpel();
                                 }
                                 else
                                 {
-                                    huidigeSpeler = 1;
                                     winnaar = true;
                                     WinSpel();
                                 }
@@ -390,7 +372,6 @@ namespace ArcadeGame2022
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
             PuntenTekst.Text = "Punten: " + punten.ToString();
-            PlaatsVijanden();
         }
 
         /// <summary>
@@ -418,38 +399,14 @@ namespace ArcadeGame2022
             else if (e != null)
             {
                 levelSpeler2 = 0;
-                levensSpeler2 = 3;
+                levensSpeler2 = 4;
                 punten = 0;
             }
-            levens = 3;
             LevensTekst.Text = "Levens: 3";
             LevelTekst.Text = "Level 1";
             levelPositie = 0; // Zet positie teller terug op 0
             velocity = 0; // Voorkom dat de speler beweegt aan het begin van een level
-            PlaatsVijanden();
             PuntenTekst.Text = "Punten: " + punten.ToString(); //reset de punten naar 0
-        }
-
-        private void PlaatsVijanden()
-        {
-            // Plaats vijanden in de gewenste posities
-            // Wordt uitgevoerd aan het begin en bij het resetten van een level/het spel
-        }
-
-        private void BeweegVijanden()
-        {
-            // Beweeg de vijanden als ze in beeld zijn (0 < x < 1536, 0 < y < 864)
-            // Dit zal waarschijnlijk verschillen afhangend van watvoor vijanden we willen
-        }
-
-        private void VerticaleBewegingVijanden()
-        {
-            // Net als VerticaleBeweging() maar specifiek voor de vijanden
-        }
-
-        private void HorizontaleBewegingVijanden()
-        {
-            // Net als HorizontaleBeweging() maar specifiek voor de vijanden
         }
 
         private void WinSpel()
@@ -468,7 +425,6 @@ namespace ArcadeGame2022
             {
                 naam2 = spelerNaam1;
                 naam1 = spelerNaam2;
-                levens = levensSpeler1;
                 HerstartLevel();
                 score1 = puntenSpeler2;
                 score2 = puntenSpeler1;
@@ -477,15 +433,13 @@ namespace ArcadeGame2022
             {
                 naam2 = spelerNaam2;
                 naam1 = spelerNaam1;
-                levens = levensSpeler2;
                 HerstartLevel();
                 score1 = puntenSpeler1;
                 score2 = puntenSpeler2;
             }
-            if (spelerNaam2 == null) // 1 spelerq
+            if (spelerNaam2 == null) // 1 speler
             {
                 naam1 = spelerNaam1;
-                levens = levensSpeler1;
                 score1 = puntenSpeler2;
             }
             aantalSpelers--;
@@ -507,7 +461,11 @@ namespace ArcadeGame2022
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
                 connection.Open();
-                command.ExecuteNonQuery(); // herhaalt?
+                if (!uitgevoerd)
+                {
+                    command.ExecuteNonQuery();
+                    uitgevoerd = true;
+                }
                 connection.Close();
             }
             catch (IOException)

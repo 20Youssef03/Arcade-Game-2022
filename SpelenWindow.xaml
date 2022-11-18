@@ -20,20 +20,6 @@
                 Width="1611"
                 Height="868"
                 Source="\achtergrond.png" HorizontalAlignment="Left" Canvas.Left="-7" VerticalAlignment="Top" Canvas.Top="-109" />
-        <Rectangle
-            x:Name="Level2Achtergrond"
-            Width="3400"
-            Height="864"
-            Canvas.Top="1000"
-            Fill="LightGreen"
-            />
-        <Rectangle
-            x:Name="Level3Achtergrond"
-            Width="3400"
-            Height="864"
-            Canvas.Top="1995"
-            Fill="Pink" Canvas.Left="-7"
-            />
         <TextBlock
             x:Name="LevelTekst"
             Text="Level 1"
@@ -771,6 +757,33 @@
             FontSize="36"
             Canvas.Top="134" Foreground="White" FontFamily="Impact"
             HorizontalAlignment="Center" VerticalAlignment="Top"
+            />
+        <Rectangle
+            Tag="Finish"
+            Width="50"
+            Height="52"
+            Canvas.Top="506"
+            Canvas.Left="41"
+            Fill="White"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            />
+        <Rectangle
+            Tag="End"
+            Width="50"
+            Height="50"
+            Canvas.Top="2526"
+            Canvas.Left="43"
+            Fill="Black"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            />
+        <Rectangle
+            Tag="Finish"
+            Width="50"
+            Height="52"
+            Canvas.Top="1564"
+            Canvas.Left="31"
+            Fill="White"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
             />
 
     </Canvas>
